@@ -1,0 +1,403 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.card {
+  padding: 2em;
+}
+
+/* Base styles with Nord colors */
+.gradient-bg {
+  background: linear-gradient(135deg, #2e3440 0%, #4c566a 100%);
+  min-height: 100vh;
+  font-family: 'Montserrat', 'Inter', Arial, sans-serif;
+}
+
+.app-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 2rem auto;
+  letter-spacing: 0;
+  color: #eceff4;
+  background: linear-gradient(90deg, #88c0d0 10%, #81a1c1 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 12px rgba(136,192,208,0.15);
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Progress bar styles */
+.progress-bar-container {
+  width: 420px;
+  height: 18px;
+  background: rgba(67, 76, 94, 0.5);
+  border-radius: 10px;
+  margin: 0.5rem auto 0.5rem auto;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  position: relative;
+}
+
+.progress-bar {
+  position: absolute;
+  left: 0;
+  transition: width 0.7s cubic-bezier(.4,1.5,.6,1), background 0.3s;
+  border-radius: 10px;
+}
+
+.seen-bar {
+  top: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #88c0d0 0%, #eceff4 100%);
+  z-index: 1;
+}
+
+.known-bar {
+  height: 7px;
+  top: 5.5px;
+  left: 0;
+  background: linear-gradient(90deg, #a3be8c 0%, #8fbcbb 100%);
+  z-index: 2;
+  box-shadow: 0 0 0 2px #3b4252, 0 1px 4px rgba(163,190,140,0.10);
+  border-radius: 10px;
+  border: 1.5px solid #a3be8c;
+}
+
+@media (max-width: 600px) {
+  .progress-bar-container {
+    width: 98vw;
+    height: 14px;
+  }
+  .known-bar {
+    height: 5px;
+    top: 4.5px;
+  }
+}
+
+.progress-bar-legend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  width: 420px;
+  margin: 0.5rem auto 0.1rem auto;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #eceff4;
+  text-shadow: 0 1px 2px rgba(46,52,64,0.2);
+}
+
+.theme-icon-btn {
+  font-size: 1.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0.3rem;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.theme-icon-btn:hover {
+  opacity: 0.8;
+}
+
+.theme-icon-btn.active {
+  opacity: 1;
+}
+
+/* UI Elements */
+.file-upload-area {
+  display: inline-block;
+  border: 2px dashed #8fbcbb;
+  border-radius: 12px;
+  padding: 1.2rem 2.5rem;
+  margin-bottom: 1.5rem;
+  background: rgba(59,66,82,0.8);
+  color: #eceff4;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.file-upload-area:hover {
+  background: #4c566a;
+  border-color: #88c0d0;
+}
+
+.mode-buttons {
+  margin-bottom: 1.2rem;
+}
+
+.mode-btn {
+  background: #3b4252;
+  color: #eceff4;
+  border: 2px solid #8fbcbb;
+  border-radius: 8px;
+  padding: 0.5rem 1.2rem;
+  margin: 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  box-shadow: 0 1px 4px rgba(46,52,64,0.08);
+}
+
+.mode-btn.active, .mode-btn:hover {
+  background: #8fbcbb;
+  color: #2e3440;
+  border-color: #88c0d0;
+}
+
+/* Flashcard */
+.flashcard {
+  background: rgba(59, 66, 82, 0.85);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(46,52,64,0.25);
+  padding: 2.5rem;
+  margin: 2rem auto;
+  width: 600px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  z-index: 1;
+}
+
+.card-animate:hover {
+  transform: scale(1.02);
+}
+
+.german-word {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #eceff4;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  user-select: none;
+  text-align: center;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.german-word:hover {
+  transform: scale(1.05);
+}
+
+.english-area {
+  height: 4rem; /* Fixed height to prevent layout shift */
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.english-word {
+  font-size: 2rem;
+  color: #88c0d0;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+/* Action buttons */
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  justify-content: center;
+}
+
+.action-buttons + .action-buttons {
+  margin-top: 0.75rem;
+}
+
+.known-btn, .revisit-btn, .next-btn, .back-btn {
+  padding: 0.7rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tip-text {
+  color: #eceff4;
+  font-size: 0.95rem;
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.85;
+}
+
+/* Nord Theme Variants */
+/* Polar Night */
+body.nord-polarNight, .App.nord-polarNight, .gradient-bg.nord-polarNight {
+  background: linear-gradient(135deg, #2e3440 0%, #4c566a 100%) !important;
+}
+
+body.nord-polarNight .flashcard {
+  background: #434c5e;
+}
+
+body.nord-polarNight .german-word {
+  color: #eceff4;
+}
+
+body.nord-polarNight .english-word {
+  color: #88c0d0;
+}
+
+body.nord-polarNight .known-btn {
+  background: linear-gradient(90deg, #a3be8c 0%, #8fbcbb 100%);
+  color: #2e3440;
+}
+
+body.nord-polarNight .revisit-btn {
+  background: linear-gradient(90deg, #ebcb8b 0%, #d08770 100%);
+  color: #2e3440;
+}
+
+body.nord-polarNight .next-btn, 
+body.nord-polarNight .back-btn {
+  background: linear-gradient(90deg, #81a1c1 0%, #88c0d0 100%);
+  color: #2e3440;
+}
+
+/* Snow Storm */
+body.nord-snowStorm, .App.nord-snowStorm, .gradient-bg.nord-snowStorm {
+  background: linear-gradient(135deg, #eceff4 0%, #d8dee9 100%) !important;
+}
+
+body.nord-snowStorm .flashcard {
+  background: #eceff4;
+}
+
+body.nord-snowStorm .german-word {
+  color: #2e3440;
+}
+
+body.nord-snowStorm .english-word {
+  color: #5e81ac;
+}
+
+body.nord-snowStorm .known-btn {
+  background: linear-gradient(90deg, #8fbcbb 0%, #88c0d0 100%);
+  color: #2e3440;
+}
+
+body.nord-snowStorm .revisit-btn {
+  background: linear-gradient(90deg, #d08770 0%, #ebcb8b 100%);
+  color: #2e3440;
+}
+
+body.nord-snowStorm .next-btn,
+body.nord-snowStorm .back-btn {
+  background: linear-gradient(90deg, #5e81ac 0%, #81a1c1 100%);
+  color: #2e3440;
+}
+
+/* Frost */
+body.nord-frost, .App.nord-frost, .gradient-bg.nord-frost {
+  background: linear-gradient(135deg, #8fbcbb 0%, #88c0d0 100%) !important;
+}
+
+body.nord-frost .flashcard {
+  background: #e5e9f0;
+}
+
+body.nord-frost .german-word {
+  color: #2e3440;
+}
+
+body.nord-frost .english-word {
+  color: #5e81ac;
+}
+
+body.nord-frost .known-btn {
+  background: linear-gradient(90deg, #a3be8c 0%, #88c0d0 100%);
+  color: #2e3440;
+}
+
+body.nord-frost .revisit-btn {
+  background: linear-gradient(90deg, #ebcb8b 0%, #d08770 100%);
+  color: #2e3440;
+}
+
+body.nord-frost .next-btn,
+body.nord-frost .back-btn {
+  background: linear-gradient(90deg, #5e81ac 0%, #81a1c1 100%);
+  color: #2e3440;
+}
+
+/* Aurora */
+body.nord-aurora, .App.nord-aurora, .gradient-bg.nord-aurora {
+  background: linear-gradient(135deg, #a3be8c 0%, #ebcb8b 100%) !important;
+}
+
+body.nord-aurora .flashcard {
+  background: #e5e9f0;
+}
+
+body.nord-aurora .german-word {
+  color: #2e3440;
+}
+
+body.nord-aurora .english-word {
+  color: #5e81ac;
+}
+
+body.nord-aurora .known-btn {
+  background: linear-gradient(90deg, #a3be8c 0%, #88c0d0 100%);
+  color: #2e3440;
+}
+
+body.nord-aurora .revisit-btn {
+  background: linear-gradient(90deg, #ebcb8b 0%, #d08770 100%);
+  color: #2e3440;
+}
+
+body.nord-aurora .next-btn,
+body.nord-aurora .back-btn {
+  background: linear-gradient(90deg, #5e81ac 0%, #81a1c1 100%);
+  color: #2e3440;
+}
+
+/* Button hover states for each theme */
+body.nord-polarNight .known-btn:hover,
+body.nord-snowStorm .known-btn:hover,
+body.nord-frost .known-btn:hover,
+body.nord-aurora .known-btn:hover {
+  transform: scale(1.04);
+}
+
+body.nord-polarNight .revisit-btn:hover,
+body.nord-snowStorm .revisit-btn:hover,
+body.nord-frost .revisit-btn:hover,
+body.nord-aurora .revisit-btn:hover {
+  transform: scale(1.04);
+}
+
+body.nord-polarNight .next-btn:hover,
+body.nord-polarNight .back-btn:hover,
+body.nord-snowStorm .next-btn:hover,
+body.nord-snowStorm .back-btn:hover,
+body.nord-frost .next-btn:hover,
+body.nord-frost .back-btn:hover,
+body.nord-aurora .next-btn:hover,
+body.nord-aurora .back-btn:hover {
+  transform: scale(1.04);
+}
+
+/* Button hover effects */
+.known-btn:hover, .revisit-btn:hover, .next-btn:hover, .back-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(46,52,64,0.15);
+}
