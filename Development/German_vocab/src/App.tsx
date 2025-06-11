@@ -39,8 +39,17 @@ function App() {
   const [articleGuess, setArticleGuess] = useState('');
   const [history, setHistory] = useState<number[]>([]); // for back button
   const [reviewMode, setReviewMode] = useState(false); // for revisit mode
-  const [theme, setTheme] = useState<'light' | 'dark'>(
-    () => (localStorage.getItem('german_vocab_theme') as 'light' | 'dark') || 'light'
+  const [theme, setTheme] = useState<'light' | 'dark' | 'nord'>(
+    () => (localStorage.getItem('german_vocab_theme') as 'light' | 'dark' | 'nord') || 'light'
+  );
+  const nordThemes = [
+    { key: 'polarNight', label: 'Polar Night' },
+    { key: 'snowStorm', label: 'Snow Storm' },
+    { key: 'frost', label: 'Frost' },
+    { key: 'aurora', label: 'Aurora' },
+  ];
+  const [nordTheme, setNordTheme] = useState<string>(
+    localStorage.getItem('german_vocab_nord_theme') || 'polarNight'
   );
   const articleList = ['der', 'die', 'das', 'ein', 'eine', 'einer', 'einem', 'den', 'dem', 'des', 'eines', 'einen', 'einem', 'einer', 'dem', 'den'];
 
@@ -82,8 +91,15 @@ function App() {
   // Theme effect
   React.useEffect(() => {
     document.body.classList.toggle('dark-mode', theme === 'dark');
+    document.body.classList.toggle('nord-mode', theme === 'nord');
     localStorage.setItem('german_vocab_theme', theme);
   }, [theme]);
+
+  React.useEffect(() => {
+    nordThemes.forEach(t => document.body.classList.remove(`nord-${t.key}`));
+    document.body.classList.add(`nord-${nordTheme}`);
+    localStorage.setItem('german_vocab_nord_theme', nordTheme);
+  }, [nordTheme]);
 
   const handleFilesUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -202,7 +218,6 @@ function App() {
   };
 
   // Progress indicator
-  const progress = vocab.length ? `${known.size} / ${vocab.length} known | ${seen.size} seen | ${revisit.size} to revisit` : '';
   const seenPercent = vocab.length ? (seen.size / vocab.length) * 100 : 0;
   const knownPercent = vocab.length ? (known.size / vocab.length) * 100 : 0;
 
@@ -222,26 +237,51 @@ function App() {
     setSeen(new Set());
   }, [vocab]);
 
+  // Theme icons for Nord variants
+  const nordThemeIcons: Record<string, string> = {
+    polarNight: '🌑',
+    snowStorm: '❄️',
+    frost: '💧',
+    aurora: '🌈',
+  };
+
   // UI for mode selection
   return (
-    <div className={`App gradient-bg${theme === 'dark' ? ' dark-mode' : ''}`} style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start' }}>
-      <h1 className="app-title">German Vocabulary Flashcards</h1>
-      <button className="theme-toggle-btn" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
-        {theme === 'dark' ? '🌞 Light Mode' : '🌙 Dark Mode'}
-      </button>
-      <label htmlFor="file-upload" className="file-upload-area" style={{ display: 'inline-block', marginLeft: '1.2rem', verticalAlign: 'middle' }}>
-        <input id="file-upload" type="file" accept=".txt" multiple onChange={handleFilesUpload} style={{ display: 'none' }} />
-        <span>Click or drag .txt files here to upload</span>
-      </label>
+    <div className={`App gradient-bg${theme === 'dark' ? ' dark-mode' : theme === 'nord' ? ' nord-mode' : ''}`} style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start' }}>
+      <h1 className="app-title">Der Wortschatz</h1>
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1.2rem' }}>
+        <div style={{ display: 'flex', gap: '0.7rem', marginRight: '1.2rem' }}>
+          {nordThemes.map(t => (
+            <button
+              key={t.key}
+              className={`theme-icon-btn${nordTheme === t.key ? ' active' : ''}`}
+              title={t.label}
+              onClick={() => setNordTheme(t.key)}
+              style={{ fontSize: '1.5rem', border: 'none', background: 'none', cursor: 'pointer', padding: '0.3rem', opacity: nordTheme === t.key ? '1' : '0.6', transition: 'opacity 0.2s' }}
+            >
+              {nordThemeIcons[t.key]}
+            </button>
+          ))}
+        </div>
+        <label htmlFor="file-upload" className="file-upload-area" style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+          <input id="file-upload" type="file" accept=".txt" multiple onChange={handleFilesUpload} style={{ display: 'none' }} />
+          <span>Click or drag .txt files here to upload</span>
+        </label>
+      </div>
       <div className="progress-bar-legend">
-        <span className="legend-seen"><span className="legend-color legend-seen-color"></span> Seen</span>
-        <span className="legend-known"><span className="legend-color legend-known-color"></span> Known</span>
+        <span className="legend-item">
+          <span className="legend-color legend-seen-color"></span>
+          Seen{" "}<span className="legend-count">{seen.size}</span>
+        </span>
+        <span className="legend-item">
+          <span className="legend-color legend-known-color"></span>
+          Known{" "}<span className="legend-count">{known.size}</span>
+        </span>
       </div>
       <div className="progress-bar-container">
         <div className="progress-bar seen-bar" style={{ width: `${seenPercent}%` }} />
         <div className="progress-bar known-bar" style={{ width: `${knownPercent}%` }} />
       </div>
-      <div className="progress-text">{progress}</div>
       <div className="mode-buttons">
         <button onClick={() => setMode('full')} className={`mode-btn${mode === 'full' ? ' active' : ''}`}>Full Word</button>
         <button onClick={() => setMode('article')} className={`mode-btn${mode === 'article' ? ' active' : ''}`}>Article Only</button>
