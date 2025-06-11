@@ -2,7 +2,7 @@
   "name": "Der Wortschatz",
   "short_name": "Wortschatz",
   "description": "German vocabulary flashcards",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#2e3440",
   "theme_color": "#88c0d0",
