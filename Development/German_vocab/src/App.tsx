@@ -37,9 +37,8 @@ function App() {
   const [revisit, setRevisit] = useState<Set<number>>(new Set());
   const [mode, setMode] = useState<'full' | 'article'>('full');
   const [articleGuess, setArticleGuess] = useState('');
-  const [history, setHistory] = useState<number[]>([]); // for back button
   const [reviewMode, setReviewMode] = useState(false); // for revisit mode
-  const [theme, setTheme] = useState<'light' | 'dark' | 'nord'>(
+  const [theme] = useState<'light' | 'dark' | 'nord'>(
     () => (localStorage.getItem('german_vocab_theme') as 'light' | 'dark' | 'nord') || 'light'
   );
   const nordThemes = [
@@ -156,7 +155,6 @@ function App() {
     }
     if (pool.length === 0) return;
     let idx = pool[Math.floor(Math.random() * pool.length)];
-    setHistory(h => (current !== null ? [...h, current] : h));
     setCurrent(idx);
     setShowEnglish(false);
     setArticleGuess('');
@@ -169,14 +167,13 @@ function App() {
 
   // Back button logic
   const prevCard = () => {
-    setHistory(h => {
-      if (h.length === 0) return h;
-      const prev = h[h.length - 1];
-      setCurrent(prev);
-      setShowEnglish(false);
-      setArticleGuess('');
-      return h.slice(0, -1);
+    setCurrent(prev => {
+      if (prev === null) return null;
+      const index = Array.from(seen).indexOf(prev);
+      return index > 0 ? Array.from(seen)[index - 1] : null;
     });
+    setShowEnglish(false);
+    setArticleGuess('');
   };
 
   // Keyboard shortcuts
@@ -336,12 +333,12 @@ function App() {
       )}
       {/* Review mode: show list of words to review */}
       {reviewMode && (
-        <div className="flashcard card-animate" style={{overflowY: 'auto', maxHeight: 350}}>
+        <div className="review-list card-animate">
           <h2 style={{marginBottom: '1rem'}}>Review List</h2>
           {revisit.size === 0 ? (
-            <div style={{color: '#eceff4'}}>No words marked for review.</div>
+            <div style={{color: 'inherit'}}>No words marked for review.</div>
           ) : (
-            <ul style={{textAlign: 'left', color: '#eceff4', fontSize: '1.2rem', paddingLeft: 0, listStyle: 'none'}}>
+            <ul style={{textAlign: 'left', color: 'inherit', fontSize: '1.2rem', paddingLeft: 0, listStyle: 'none'}}>
               {Array.from(revisit).map(idx => (
                 <li key={idx} style={{marginBottom: '0.7rem'}}>
                   <span style={{fontWeight: 700}}>{vocab[idx].german}</span>
