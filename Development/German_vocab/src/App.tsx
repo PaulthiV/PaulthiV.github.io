@@ -66,7 +66,7 @@ function App() {
     return vocab.map((v, i) => ({ i, a: splitArticle(v.german).article })).filter(x => x.a).map(x => x.i);
   }
 
-  // Load vocab from localStorage on mount
+  // Load vocab from localStorage or from public/vocab/basic.txt on mount
   React.useEffect(() => {
     const saved = localStorage.getItem('german_vocab_flashcards');
     if (saved) {
@@ -75,9 +75,19 @@ function App() {
         if (Array.isArray(parsed) && parsed.length > 0) {
           setVocab(parsed);
           setCurrent(Math.floor(Math.random() * parsed.length));
+          return;
         }
       } catch {}
     }
+    // If not in localStorage, fetch from public/vocab/basic.txt
+    fetch('/vocab/basic.txt')
+      .then(res => res.ok ? res.text() : Promise.reject('Not found'))
+      .then(text => {
+        const parsed = parseVocabFile(text);
+        setVocab(parsed);
+        setCurrent(parsed.length ? Math.floor(Math.random() * parsed.length) : null);
+      })
+      .catch(() => {});
   }, []);
 
   // Save vocab to localStorage whenever it changes
@@ -242,6 +252,23 @@ function App() {
     aurora: '🌈',
   };
 
+  // Article mode: multiple choice logic
+  function getArticleChoices(correct: string) {
+    const uniqueArticles = Array.from(new Set(articleList));
+    const choices = [correct];
+    while (choices.length < 4 && uniqueArticles.length > 0) {
+      const idx = Math.floor(Math.random() * uniqueArticles.length);
+      const candidate = uniqueArticles.splice(idx, 1)[0];
+      if (!choices.includes(candidate)) choices.push(candidate);
+    }
+    // Shuffle
+    for (let i = choices.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [choices[i], choices[j]] = [choices[j], choices[i]];
+    }
+    return choices;
+  }
+
   // UI for mode selection
   return (
     <div className={`App gradient-bg${theme === 'dark' ? ' dark-mode' : theme === 'nord' ? ' nord-mode' : ''}`} style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start' }}>
@@ -298,21 +325,51 @@ function App() {
           ) : (
             (() => {
               const { article, word } = splitArticle(vocab[current].german);
+              // Move state up to App to avoid React hook issues
+              if (!article) {
+                return (
+                  <div className="german-word" style={{color: 'red', fontWeight: 600}}>
+                    No article found for this word.
+                  </div>
+                );
+              }
+              // Use useState for articleAnswered, articleCorrect, choices, and reset on card change
+              const [articleAnswered, setArticleAnswered] = React.useState(false);
+              const [articleCorrect, setArticleCorrect] = React.useState(false);
+              const [choices, setChoices] = React.useState<string[]>([]);
+              React.useEffect(() => {
+                setChoices(getArticleChoices(article));
+                setArticleAnswered(false);
+                setArticleCorrect(false);
+                setArticleGuess('');
+                setShowEnglish(false);
+              }, [current]);
               return (
                 <>
                   <div className="german-word">
-                    <span className="article-blank">{article ? '___' : ''}</span>{word}
+                    <span className="article-blank">{'___ '}</span>{word}
                   </div>
                   <div className="english-area">
-                    {article && (
-                      <form autoComplete="off" onSubmit={e => { e.preventDefault(); setShowEnglish(true); }} className="article-form">
-                        <input type="text" autoComplete="off" value={articleGuess} onChange={e => setArticleGuess(e.target.value)} placeholder="Type article..." className="article-input" />
-                        <button type="submit" className="check-btn">Check</button>
-                      </form>
-                    )}
-                    {showEnglish && article && (
-                      <span className={`article-feedback ${articleGuess.trim().toLowerCase() === article.toLowerCase() ? 'correct' : 'incorrect'}`}>
-                        {article} {articleGuess.trim().toLowerCase() === article.toLowerCase() ? '✔️' : '✗'}
+                    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+                      {choices.map(choice => (
+                        <button
+                          key={choice}
+                          className={`article-choice-btn${articleAnswered && choice === article ? ' correct' : ''}${articleAnswered && choice !== article && choice === articleGuess ? ' incorrect' : ''}`}
+                          disabled={articleAnswered}
+                          onClick={() => {
+                            setArticleGuess(choice);
+                            setArticleAnswered(true);
+                            setArticleCorrect(choice === article);
+                            setShowEnglish(true);
+                          }}
+                        >
+                          {choice}
+                        </button>
+                      ))}
+                    </div>
+                    {showEnglish && articleAnswered && (
+                      <span className={`article-feedback ${articleCorrect ? 'correct' : 'incorrect'}`} style={{ color: articleCorrect ? 'green' : 'red', fontWeight: 700, fontSize: '1.3rem', marginLeft: '1rem' }}>
+                        {articleCorrect ? '✔️' : '✗'} {article}
                       </span>
                     )}
                   </div>
