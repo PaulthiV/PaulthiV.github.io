@@ -237,6 +237,35 @@
   opacity: 0.85;
 }
 
+/* Article Multiple-Choice Buttons */
+.article-choice-btn {
+  background: #eceff4;
+  color: #2e3440;
+  border: 2px solid #8fbcbb;
+  border-radius: 8px;
+  padding: 0.4rem 1.1rem;
+  margin: 0.2rem 0.4rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(46,52,64,0.08);
+}
+
+.article-choice-btn.correct {
+  background: #a3be8c;
+  color: #2e3440;
+  border-color: #a3be8c;
+  box-shadow: 0 0 0 2px #a3be8c, 0 1px 4px rgba(163,190,140,0.10);
+}
+
+.article-choice-btn.incorrect {
+  background: #d08770;
+  color: #2e3440;
+  border-color: #d08770;
+  box-shadow: 0 0 0 2px #d08770, 0 1px 4px rgba(208,135,112,0.10);
+}
+
 /* Nord Theme Variants */
 /* Polar Night */
 body.nord-polarNight, .App.nord-polarNight, .gradient-bg.nord-polarNight {
@@ -449,4 +478,9 @@ body.nord-aurora .back-btn:hover {
 }
 .german-word, .english-word {
   color: inherit;
+}
+
+.correct-article {
+  color: #a3be8c; /* Nord14 - green color from Nord theme */
+  font-weight: bold;
 }

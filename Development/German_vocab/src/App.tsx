@@ -201,9 +201,10 @@ function App() {
     setShowEnglish(false);
   };
 
-  // Progress indicator
-  const seenPercent = vocab.length ? (seen.size / vocab.length) * 100 : 0;
-  const knownPercent = vocab.length ? (known.size / vocab.length) * 100 : 0;
+  // Progress indicator - only count words that have both German and English text
+  const validWords = vocab.filter(v => v.german && v.english).length;
+  const seenPercent = validWords ? (seen.size / validWords) * 100 : 0;
+  const knownPercent = validWords ? (known.size / validWords) * 100 : 0;
 
   React.useEffect(() => {
     // When a new card is shown (current changes), mark it as seen
@@ -403,7 +404,7 @@ function ArticleCard({ vocab, getArticleChoices, setArticleGuess, articleGuess, 
           ))}
         </div>
         {showEnglish && articleAnswered && (
-          <span className={`article-feedback ${articleCorrect ? 'correct' : 'incorrect'}`} style={{ color: articleCorrect ? 'green' : 'red', fontWeight: 700, fontSize: '1.3rem', marginLeft: '1rem' }}>
+          <span className={`article-feedback ${articleCorrect ? 'correct-article' : 'incorrect'}`} style={{ fontWeight: 700, fontSize: '1.3rem', marginLeft: '1rem' }}>
             {articleCorrect ? '✔️' : '✗'} {article}
           </span>
         )}
