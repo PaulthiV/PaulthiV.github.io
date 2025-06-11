@@ -325,7 +325,6 @@ function App() {
           ) : (
             (() => {
               const { article, word } = splitArticle(vocab[current].german);
-              // Move state up to App to avoid React hook issues
               if (!article) {
                 return (
                   <div className="german-word" style={{color: 'red', fontWeight: 600}}>
@@ -333,7 +332,8 @@ function App() {
                   </div>
                 );
               }
-              // Use useState for articleAnswered, articleCorrect, choices, and reset on card change
+              // Move state up to App to avoid React hook issues
+              // Use a unique key for each card to reset state
               const [articleAnswered, setArticleAnswered] = React.useState(false);
               const [articleCorrect, setArticleCorrect] = React.useState(false);
               const [choices, setChoices] = React.useState<string[]>([]);
@@ -343,7 +343,7 @@ function App() {
                 setArticleCorrect(false);
                 setArticleGuess('');
                 setShowEnglish(false);
-              }, [current]);
+              }, [current, vocab[current]?.german]);
               return (
                 <>
                   <div className="german-word">
