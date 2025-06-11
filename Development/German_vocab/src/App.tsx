@@ -323,59 +323,15 @@ function App() {
               </div>
             </>
           ) : (
-            (() => {
-              const { article, word } = splitArticle(vocab[current].german);
-              if (!article) {
-                return (
-                  <div className="german-word" style={{color: 'red', fontWeight: 600}}>
-                    No article found for this word.
-                  </div>
-                );
-              }
-              // Move state up to App to avoid React hook issues
-              // Use a unique key for each card to reset state
-              const [articleAnswered, setArticleAnswered] = React.useState(false);
-              const [articleCorrect, setArticleCorrect] = React.useState(false);
-              const [choices, setChoices] = React.useState<string[]>([]);
-              React.useEffect(() => {
-                setChoices(getArticleChoices(article));
-                setArticleAnswered(false);
-                setArticleCorrect(false);
-                setArticleGuess('');
-                setShowEnglish(false);
-              }, [current, vocab[current]?.german]);
-              return (
-                <>
-                  <div className="german-word">
-                    <span className="article-blank">{'___ '}</span>{word}
-                  </div>
-                  <div className="english-area">
-                    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-                      {choices.map(choice => (
-                        <button
-                          key={choice}
-                          className={`article-choice-btn${articleAnswered && choice === article ? ' correct' : ''}${articleAnswered && choice !== article && choice === articleGuess ? ' incorrect' : ''}`}
-                          disabled={articleAnswered}
-                          onClick={() => {
-                            setArticleGuess(choice);
-                            setArticleAnswered(true);
-                            setArticleCorrect(choice === article);
-                            setShowEnglish(true);
-                          }}
-                        >
-                          {choice}
-                        </button>
-                      ))}
-                    </div>
-                    {showEnglish && articleAnswered && (
-                      <span className={`article-feedback ${articleCorrect ? 'correct' : 'incorrect'}`} style={{ color: articleCorrect ? 'green' : 'red', fontWeight: 700, fontSize: '1.3rem', marginLeft: '1rem' }}>
-                        {articleCorrect ? '✔️' : '✗'} {article}
-                      </span>
-                    )}
-                  </div>
-                </>
-              );
-            })()
+            <ArticleCard
+              key={vocab[current].german}
+              vocab={vocab[current]}
+              getArticleChoices={getArticleChoices}
+              setArticleGuess={setArticleGuess}
+              articleGuess={articleGuess}
+              setShowEnglish={setShowEnglish}
+              showEnglish={showEnglish}
+            />
           )}
           {/* Flip: Next/Back on top, Known/Revisit below */}
           <div className="action-buttons">
@@ -412,6 +368,74 @@ function App() {
       {vocab.length === 0 && <p className="upload-hint">Upload one or more .txt files with German-English vocabulary pairs (one per line, separated by ' - ').</p>}
       <div className="tip-text">Tip: Click the German word or press Space to reveal. Use → for next card, ← for previous card.</div>
     </div>
+  );
+}
+
+function ArticleCard({ vocab, getArticleChoices, setArticleGuess, articleGuess, setShowEnglish, showEnglish }: {
+  vocab: VocabPair,
+  getArticleChoices: (correct: string) => string[],
+  setArticleGuess: (val: string) => void,
+  articleGuess: string,
+  setShowEnglish: (val: boolean) => void,
+  showEnglish: boolean
+}) {
+  const articleList = ['der', 'die', 'das', 'ein', 'eine', 'einer', 'einem', 'den', 'dem', 'des', 'eines', 'einen', 'einem', 'einer', 'dem', 'den'];
+  function splitArticle(german: string) {
+    const parts = german.split(' ');
+    if (parts.length > 1 && articleList.includes(parts[0].toLowerCase())) {
+      return { article: parts[0], word: parts.slice(1).join(' ') };
+    }
+    return { article: '', word: german };
+  }
+  const { article, word } = splitArticle(vocab.german);
+  const [articleAnswered, setArticleAnswered] = React.useState(false);
+  const [articleCorrect, setArticleCorrect] = React.useState(false);
+  const [choices, setChoices] = React.useState<string[]>([]);
+  React.useEffect(() => {
+    setChoices(article ? getArticleChoices(article) : []);
+    setArticleAnswered(false);
+    setArticleCorrect(false);
+    setArticleGuess('');
+    setShowEnglish(false);
+    // eslint-disable-next-line
+  }, [vocab.german]);
+  if (!article) {
+    return (
+      <div className="german-word" style={{color: 'red', fontWeight: 600}}>
+        No article found for this word.
+      </div>
+    );
+  }
+  return (
+    <>
+      <div className="german-word">
+        <span className="article-blank">{'___ '}</span>{word}
+      </div>
+      <div className="english-area">
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+          {choices.map(choice => (
+            <button
+              key={choice}
+              className={`article-choice-btn${articleAnswered && choice === article ? ' correct' : ''}${articleAnswered && choice !== article && choice === articleGuess ? ' incorrect' : ''}`}
+              disabled={articleAnswered}
+              onClick={() => {
+                setArticleGuess(choice);
+                setArticleAnswered(true);
+                setArticleCorrect(choice === article);
+                setShowEnglish(true);
+              }}
+            >
+              {choice}
+            </button>
+          ))}
+        </div>
+        {showEnglish && articleAnswered && (
+          <span className={`article-feedback ${articleCorrect ? 'correct' : 'incorrect'}`} style={{ color: articleCorrect ? 'green' : 'red', fontWeight: 700, fontSize: '1.3rem', marginLeft: '1rem' }}>
+            {articleCorrect ? '✔️' : '✗'} {article}
+          </span>
+        )}
+      </div>
+    </>
   );
 }
 
