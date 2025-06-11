@@ -50,7 +50,8 @@ function App() {
   const [nordTheme, setNordTheme] = useState<string>(
     localStorage.getItem('german_vocab_nord_theme') || 'polarNight'
   );
-  const articleList = ['der', 'die', 'das', 'ein', 'eine', 'einer', 'einem', 'den', 'dem', 'des', 'eines', 'einen', 'einem', 'einer', 'dem', 'den'];
+  // Only use der/die/das for article mode
+  const articleList = ['der', 'die', 'das'];
 
   // Helper to split article from word
   function splitArticle(german: string) {
@@ -109,30 +110,6 @@ function App() {
     document.body.classList.add(`nord-${nordTheme}`);
     localStorage.setItem('german_vocab_nord_theme', nordTheme);
   }, [nordTheme]);
-
-  const handleFilesUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    if (!files || files.length === 0) return;
-    let allVocab: VocabPair[] = [];
-    let loaded = 0;
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const text = event.target?.result as string;
-        allVocab = allVocab.concat(parseVocabFile(text));
-        loaded++;
-        if (loaded === files.length) {
-          setVocab(allVocab);
-          setCurrent(allVocab.length ? Math.floor(Math.random() * allVocab.length) : null);
-          setShowEnglish(false);
-          // Save to localStorage
-          localStorage.setItem('german_vocab_flashcards', JSON.stringify(allVocab));
-        }
-      };
-      reader.readAsText(file);
-    }
-  };
 
   const handleWordClick = () => {
     setShowEnglish(s => !s);
@@ -287,10 +264,6 @@ function App() {
             </button>
           ))}
         </div>
-        <label htmlFor="file-upload" className="file-upload-area" style={{ display: 'inline-block', verticalAlign: 'middle' }}>
-          <input id="file-upload" type="file" accept=".txt" multiple onChange={handleFilesUpload} style={{ display: 'none' }} />
-          <span>Click or drag .txt files here to upload</span>
-        </label>
       </div>
       <div className="progress-bar-legend">
         <span className="legend-item">
@@ -365,7 +338,7 @@ function App() {
       {vocab.length > 0 && (
         <button onClick={resetKnown} className="reset-btn">Reset Progress</button>
       )}
-      {vocab.length === 0 && <p className="upload-hint">Upload one or more .txt files with German-English vocabulary pairs (one per line, separated by ' - ').</p>}
+      {vocab.length === 0 && <p className="upload-hint">No vocabulary loaded. Please add vocab files to public/vocab/ and reload.</p>}
       <div className="tip-text">Tip: Click the German word or press Space to reveal. Use → for next card, ← for previous card.</div>
     </div>
   );
@@ -379,7 +352,7 @@ function ArticleCard({ vocab, getArticleChoices, setArticleGuess, articleGuess, 
   setShowEnglish: (val: boolean) => void,
   showEnglish: boolean
 }) {
-  const articleList = ['der', 'die', 'das', 'ein', 'eine', 'einer', 'einem', 'den', 'dem', 'des', 'eines', 'einen', 'einem', 'einer', 'dem', 'den'];
+  const articleList = ['der', 'die', 'das'];
   function splitArticle(german: string) {
     const parts = german.split(' ');
     if (parts.length > 1 && articleList.includes(parts[0].toLowerCase())) {
