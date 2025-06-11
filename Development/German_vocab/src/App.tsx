@@ -287,7 +287,7 @@ function App() {
         <button onClick={() => setMode('article')} className={`mode-btn${mode === 'article' ? ' active' : ''}`}>Article Only</button>
         <button onClick={() => setReviewMode(r => !r)} className={`mode-btn${reviewMode ? ' active' : ''}`}>Review ({revisit.size})</button>
       </div>
-      {vocab.length > 0 && current !== null && (
+      {vocab.length > 0 && current !== null && !reviewMode && (
         <div key={current} className="flashcard card-animate">
           {mode === 'full' ? (
             <>
@@ -323,14 +323,33 @@ function App() {
               );
             })()
           )}
-          <div className="action-buttons">
-            <button onClick={markKnown} className="known-btn">I Know This</button>
-            <button onClick={markRevisit} className="revisit-btn">Mark for Review</button>
-          </div>
+          {/* Flip: Next/Back on top, Known/Revisit below */}
           <div className="action-buttons">
             <button onClick={prevCard} className="back-btn">Back</button>
             <button onClick={nextCard} className="next-btn">Next Word</button>
           </div>
+          <div className="action-buttons">
+            <button onClick={markKnown} className="known-btn">I Know This</button>
+            <button onClick={markRevisit} className="revisit-btn">Mark for Review</button>
+          </div>
+        </div>
+      )}
+      {/* Review mode: show list of words to review */}
+      {reviewMode && (
+        <div className="flashcard card-animate" style={{overflowY: 'auto', maxHeight: 350}}>
+          <h2 style={{marginBottom: '1rem'}}>Review List</h2>
+          {revisit.size === 0 ? (
+            <div style={{color: '#eceff4'}}>No words marked for review.</div>
+          ) : (
+            <ul style={{textAlign: 'left', color: '#eceff4', fontSize: '1.2rem', paddingLeft: 0, listStyle: 'none'}}>
+              {Array.from(revisit).map(idx => (
+                <li key={idx} style={{marginBottom: '0.7rem'}}>
+                  <span style={{fontWeight: 700}}>{vocab[idx].german}</span>
+                  <span style={{marginLeft: 12, color: '#88c0d0'}}>{vocab[idx].english}</span>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       )}
       {vocab.length > 0 && (
