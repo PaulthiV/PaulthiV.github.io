@@ -501,16 +501,13 @@ body.nord-aurora .back-btn:hover {
 
 .article-feedback {
   font-weight: bold;
+  transition: color 0.2s ease;
 }
 
 .article-feedback.correct {
-  color: #a3be8c; /* Nord14 - green color */
-}
-
-.article-feedback.correct span {
-  color: #a3be8c; /* Make the tick mark green too */
+  color: #a3be8c !important; /* Nord14 - green color */
 }
 
 .article-feedback.incorrect {
-  color: #bf616a; /* Nord11 - red color */
+  color: #bf616a !important; /* Nord11 - red color */
 }

@@ -411,7 +411,7 @@ function ArticleCard({ vocab, getArticleChoices, setArticleGuess, articleGuess, 
         </div>
         {showEnglish && articleAnswered && (
           <span className={`article-feedback ${articleCorrect ? 'correct' : 'incorrect'}`} style={{ fontWeight: 700, fontSize: '1.3rem', marginLeft: '1rem' }}>
-            <span>{articleCorrect ? '✔️' : '✗'}</span> {article}
+            {articleCorrect ? '✓' : '✗'} {article}
           </span>
         )}
       </div>
