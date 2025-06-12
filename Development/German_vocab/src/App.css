@@ -467,47 +467,95 @@ body.nord-aurora .back-btn:hover {
 }
 
 @media (max-width: 700px) {
+  /* Mobile-optimized styles */
+  #root {
+    padding: 1rem;
+    margin: 0;
+    width: 100%;
+  }
+
   .flashcard, .review-list {
-    width: 98vw;
+    width: 94vw;
     min-width: 0;
-    padding: 1.2rem;
+    padding: 1rem;
     font-size: 1rem;
     box-sizing: border-box;
     max-width: 100vw;
     height: auto;
-    min-height: 200px;
+    min-height: 180px;
+    margin: 1rem auto;
   }
-  .german-word, .english-word {
-    font-size: 1.3rem;
+
+  .german-word {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
     word-break: break-word;
   }
+
+  .english-word {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    word-break: break-word;
+  }
+
   .app-title {
     font-size: 1.5rem;
+    margin: 1rem auto;
   }
+
   .progress-bar-legend, .progress-bar-container {
-    width: 98vw;
+    width: 94vw;
     min-width: 0;
     max-width: 100vw;
   }
-}
 
-/* Ensure text is always visible regardless of theme */
-.flashcard, .review-list {
-  color: inherit;
-}
-.german-word, .english-word {
-  color: inherit;
-}
+  .progress-bar-stats {
+    padding: 0 0.5rem;
+  }
 
-.article-feedback {
-  font-weight: bold;
-  transition: color 0.2s ease;
-}
+  .mode-buttons {
+    margin-bottom: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
 
-.article-feedback.correct {
-  color: #a3be8c !important; /* Nord14 - green color */
-}
+  .mode-btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    margin: 0;
+  }
 
-.article-feedback.incorrect {
-  color: #bf616a !important; /* Nord11 - red color */
+  .action-buttons {
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    padding: 0 0.5rem;
+  }
+
+  .known-btn, .revisit-btn, .next-btn, .back-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    min-width: 80px;
+  }
+
+  .tip-text {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    padding: 0 1rem;
+  }
+
+  .english-area {
+    height: auto;
+    min-height: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .article-choice-btn {
+    padding: 0.3rem 0.9rem;
+    font-size: 1rem;
+    margin: 0.15rem 0.3rem;
+  }
 }
