@@ -309,13 +309,12 @@ function App() {
   );
 }
 
-function ArticleCard({ vocab, getArticleChoices, setArticleGuess, articleGuess, setShowEnglish, showEnglish }: {
+function ArticleCard({ vocab, getArticleChoices, setArticleGuess, articleGuess, setShowEnglish }: {
   vocab: VocabPair,
   getArticleChoices: (correct: string) => string[],
   setArticleGuess: (val: string) => void,
   articleGuess: string,
-  setShowEnglish: (val: boolean) => void,
-  showEnglish: boolean
+  setShowEnglish: (val: boolean) => void
 }) {
   const articleList = ['der', 'die', 'das'];
   function splitArticle(german: string) {
@@ -327,7 +326,6 @@ function ArticleCard({ vocab, getArticleChoices, setArticleGuess, articleGuess, 
   }
   const { article, word } = splitArticle(vocab.german);
   const [articleAnswered, setArticleAnswered] = React.useState(false);
-  const [articleCorrect, setArticleCorrect] = React.useState(false);
   const [choices, setChoices] = React.useState<string[]>([]);
   React.useEffect(() => {
     setChoices(article ? getArticleChoices(article) : []);
@@ -355,7 +353,6 @@ function ArticleCard({ vocab, getArticleChoices, setArticleGuess, articleGuess, 
               onClick={() => {
                 setArticleGuess(choice);
                 setArticleAnswered(true);
-                setArticleCorrect(choice === article);
                 setShowEnglish(true);
               }}
             >
