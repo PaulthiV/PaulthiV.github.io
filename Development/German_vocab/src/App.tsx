@@ -50,6 +50,9 @@ function App() {
   const [nordTheme, setNordTheme] = useState<string>(
     localStorage.getItem('german_vocab_nord_theme') || 'polarNight'
   );
+  const [articleHistory, setArticleHistory] = useState<number[]>([]);
+  const [articleHistoryIndex, setArticleHistoryIndex] = useState<number>(-1);
+
   // Only use der/die/das for article mode
   const articleList = ['der', 'die', 'das'];
 
@@ -120,9 +123,14 @@ function App() {
     if (mode === 'article' && vocab.length > 0) {
       const indices = getArticleIndices();
       if (indices.length > 0) {
-        setCurrent(indices[Math.floor(Math.random() * indices.length)]);
+        const idx = indices[Math.floor(Math.random() * indices.length)];
+        setCurrent(idx);
+        setArticleHistory([idx]);
+        setArticleHistoryIndex(0);
       } else {
         setCurrent(null);
+        setArticleHistory([]);
+        setArticleHistoryIndex(-1);
       }
       setShowEnglish(false);
       setArticleGuess('');
@@ -132,36 +140,55 @@ function App() {
   // Next card logic (with review mode and history)
   const nextCard = () => {
     if (!vocab.length) return;
-    let pool: number[];
-    if (reviewMode) {
-      pool = Array.from(revisit);
-    } else if (mode === 'article') {
-      pool = getArticleIndices();
+    
+    if (mode === 'article') {
+      let pool = getArticleIndices();
+      if (pool.length === 0) return;
+      
+      // If we're not at the end of history, move forward in history
+      if (articleHistoryIndex < articleHistory.length - 1) {
+        setArticleHistoryIndex(i => i + 1);
+        setCurrent(articleHistory[articleHistoryIndex + 1]);
+      } else {
+        // Get a new random article word
+        let idx = pool[Math.floor(Math.random() * pool.length)];
+        setCurrent(idx);
+        setArticleHistory(prev => [...prev, idx]);
+        setArticleHistoryIndex(i => i + 1);
+      }
     } else {
-      pool = vocab.map((_, i) => i);
+      let pool = reviewMode ? Array.from(revisit) : vocab.map((_, i) => i);
+      if (pool.length === 0) return;
+      let idx = pool[Math.floor(Math.random() * pool.length)];
+      setCurrent(idx);
+      // Only track seen words in full mode (not in review mode)
+      if (mode === 'full') {
+        setSeen(prev => {
+          const updated = new Set(prev);
+          if (idx !== null) updated.add(idx);
+          return updated;
+        });
+      }
     }
-    if (pool.length === 0) return;
-    let idx = pool[Math.floor(Math.random() * pool.length)];
-    setCurrent(idx);
+    
     setShowEnglish(false);
     setArticleGuess('');
-    // Only track seen words in full mode
-    if (mode === 'full') {
-      setSeen(prev => {
-        const updated = new Set(prev);
-        if (idx !== null) updated.add(idx);
-        return updated;
-      });
-    }
   };
 
   // Back button logic
   const prevCard = () => {
-    setCurrent(prev => {
-      if (prev === null) return null;
-      const index = Array.from(seen).indexOf(prev);
-      return index > 0 ? Array.from(seen)[index - 1] : null;
-    });
+    if (mode === 'article') {
+      if (articleHistoryIndex > 0) {
+        setArticleHistoryIndex(i => i - 1);
+        setCurrent(articleHistory[articleHistoryIndex - 1]);
+      }
+    } else {
+      setCurrent(prev => {
+        if (prev === null) return null;
+        const index = Array.from(seen).indexOf(prev);
+        return index > 0 ? Array.from(seen)[index - 1] : null;
+      });
+    }
     setShowEnglish(false);
     setArticleGuess('');
   };
