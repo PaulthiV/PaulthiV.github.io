@@ -145,11 +145,14 @@ function App() {
     setCurrent(idx);
     setShowEnglish(false);
     setArticleGuess('');
-    setSeen(prev => {
-      const updated = new Set(prev);
-      if (idx !== null) updated.add(idx);
-      return updated;
-    });
+    // Only increment seen for full mode
+    if (mode === 'full') {
+      setSeen(prev => {
+        const updated = new Set(prev);
+        if (idx !== null) updated.add(idx);
+        return updated;
+      });
+    }
   };
 
   // Back button logic
@@ -207,15 +210,15 @@ function App() {
   const knownPercent = validWords ? (known.size / validWords) * 100 : 0;
 
   React.useEffect(() => {
-    // When a new card is shown (current changes), mark it as seen
-    if (current !== null) {
+    // When a new card is shown (current changes), mark it as seen in full mode only
+    if (current !== null && mode === 'full') {
       setSeen(prev => {
         const updated = new Set(prev);
         updated.add(current);
         return updated;
       });
     }
-  }, [current]);
+  }, [current, mode]);
 
   // When vocab is reset (new upload or clear), reset seen
   React.useEffect(() => {
@@ -275,6 +278,9 @@ function App() {
           <span className="legend-color legend-known-color"></span>
           Known{" "}<span className="legend-count">{known.size}</span>
         </span>
+      </div>
+      <div className="progress-bar-stats">
+        <span className="total-words">Words Seen: {seen.size} / {vocab.filter(v => v.german && v.english).length}</span>
       </div>
       <div className="progress-bar-container">
         <div className="progress-bar seen-bar" style={{ width: `${seenPercent}%` }} />
@@ -404,8 +410,8 @@ function ArticleCard({ vocab, getArticleChoices, setArticleGuess, articleGuess, 
           ))}
         </div>
         {showEnglish && articleAnswered && (
-          <span className={`article-feedback ${articleCorrect ? 'correct-article' : 'incorrect'}`} style={{ fontWeight: 700, fontSize: '1.3rem', marginLeft: '1rem' }}>
-            {articleCorrect ? '✔️' : '✗'} {article}
+          <span className={`article-feedback ${articleCorrect ? 'correct' : 'incorrect'}`} style={{ fontWeight: 700, fontSize: '1.3rem', marginLeft: '1rem' }}>
+            <span>{articleCorrect ? '✔️' : '✗'}</span> {article}
           </span>
         )}
       </div>
