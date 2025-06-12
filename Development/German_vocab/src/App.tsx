@@ -145,14 +145,12 @@ function App() {
     setCurrent(idx);
     setShowEnglish(false);
     setArticleGuess('');
-    // Only increment seen for full mode
-    if (mode === 'full') {
-      setSeen(prev => {
-        const updated = new Set(prev);
-        if (idx !== null) updated.add(idx);
-        return updated;
-      });
-    }
+    // Track seen words in both modes, but only count them in the progress for full mode
+    setSeen(prev => {
+      const updated = new Set(prev);
+      if (idx !== null) updated.add(idx);
+      return updated;
+    });
   };
 
   // Back button logic
@@ -233,21 +231,9 @@ function App() {
     aurora: '🌈',
   };
 
-  // Article mode: multiple choice logic
-  function getArticleChoices(correct: string) {
-    const uniqueArticles = Array.from(new Set(articleList));
-    const choices = [correct];
-    while (choices.length < 4 && uniqueArticles.length > 0) {
-      const idx = Math.floor(Math.random() * uniqueArticles.length);
-      const candidate = uniqueArticles.splice(idx, 1)[0];
-      if (!choices.includes(candidate)) choices.push(candidate);
-    }
-    // Shuffle
-    for (let i = choices.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [choices[i], choices[j]] = [choices[j], choices[i]];
-    }
-    return choices;
+  // Article mode: always use der, die, das in fixed order
+  function getArticleChoices(_correct: string) {
+    return ['der', 'die', 'das'];
   }
 
   // UI for mode selection
