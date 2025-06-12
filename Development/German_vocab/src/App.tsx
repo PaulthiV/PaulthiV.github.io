@@ -225,12 +225,6 @@ function App() {
     }
   };
 
-  const resetKnown = () => {
-    setKnown(new Set());
-    setCurrent(vocab.length ? Math.floor(Math.random() * vocab.length) : null);
-    setShowEnglish(false);
-  };
-
   // Progress indicator - only count words that have both German and English text
   const validWords = vocab.filter(v => v.german && v.english).length;
   const seenPercent = validWords ? (seen.size / validWords) * 100 : 0;
@@ -356,9 +350,6 @@ function App() {
             </ul>
           )}
         </div>
-      )}
-      {vocab.length > 0 && (
-        <button onClick={resetKnown} className="reset-btn">Reset Progress</button>
       )}
       {vocab.length === 0 && <p className="upload-hint">No vocabulary loaded. Please add vocab files to public/vocab/ and reload.</p>}
       <div className="tip-text">Tip: Click the German word or press Space to reveal. Use → for next card, ← for previous card.</div>
