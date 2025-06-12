@@ -145,12 +145,14 @@ function App() {
     setCurrent(idx);
     setShowEnglish(false);
     setArticleGuess('');
-    // Track seen words in both modes, but only count them in the progress for full mode
-    setSeen(prev => {
-      const updated = new Set(prev);
-      if (idx !== null) updated.add(idx);
-      return updated;
-    });
+    // Only track seen words in full mode
+    if (mode === 'full') {
+      setSeen(prev => {
+        const updated = new Set(prev);
+        if (idx !== null) updated.add(idx);
+        return updated;
+      });
+    }
   };
 
   // Back button logic
@@ -366,11 +368,7 @@ function ArticleCard({ vocab, getArticleChoices, setArticleGuess, articleGuess, 
     // eslint-disable-next-line
   }, [vocab.german]);
   if (!article) {
-    return (
-      <div className="german-word" style={{color: 'red', fontWeight: 600}}>
-        No article found for this word.
-      </div>
-    );
+    return <div></div>;
   }
   return (
     <>
