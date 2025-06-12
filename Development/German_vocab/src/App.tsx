@@ -309,12 +309,13 @@ function App() {
   );
 }
 
-function ArticleCard({ vocab, getArticleChoices, setArticleGuess, articleGuess, setShowEnglish }: {
+function ArticleCard({ vocab, getArticleChoices, setArticleGuess, articleGuess, setShowEnglish, showEnglish }: {
   vocab: VocabPair,
   getArticleChoices: (correct: string) => string[],
   setArticleGuess: (val: string) => void,
   articleGuess: string,
-  setShowEnglish: (val: boolean) => void
+  setShowEnglish: (val: boolean) => void,
+  showEnglish: boolean
 }) {
   const articleList = ['der', 'die', 'das'];
   function splitArticle(german: string) {
@@ -330,7 +331,6 @@ function ArticleCard({ vocab, getArticleChoices, setArticleGuess, articleGuess, 
   React.useEffect(() => {
     setChoices(article ? getArticleChoices(article) : []);
     setArticleAnswered(false);
-    setArticleCorrect(false);
     setArticleGuess('');
     setShowEnglish(false);
     // eslint-disable-next-line
@@ -344,7 +344,8 @@ function ArticleCard({ vocab, getArticleChoices, setArticleGuess, articleGuess, 
         <span className="article-blank">{'___ '}</span>{word}
       </div>
       <div className="english-area">
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+        {showEnglish && <div className="english-word">{vocab.english}</div>}
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', marginTop: '1rem' }}>
           {choices.map(choice => (
             <button
               key={choice}
