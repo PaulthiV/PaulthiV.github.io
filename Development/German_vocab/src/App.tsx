@@ -37,19 +37,7 @@ function App() {
   const [revisit, setRevisit] = useState<Set<number>>(new Set());
   const [mode, setMode] = useState<'full' | 'article'>('full');
   const [articleGuess, setArticleGuess] = useState('');
-  const [reviewMode, setReviewMode] = useState(false); // for revisit mode
-  const [theme] = useState<'light' | 'dark' | 'nord'>(
-    () => (localStorage.getItem('german_vocab_theme') as 'light' | 'dark' | 'nord') || 'light'
-  );
-  const nordThemes = [
-    { key: 'polarNight', label: 'Polar Night' },
-    { key: 'snowStorm', label: 'Snow Storm' },
-    { key: 'frost', label: 'Frost' },
-    { key: 'aurora', label: 'Aurora' },
-  ];
-  const [nordTheme, setNordTheme] = useState<string>(
-    localStorage.getItem('german_vocab_nord_theme') || 'polarNight'
-  );
+  const [reviewMode, setReviewMode] = useState(false);
   const [articleHistory, setArticleHistory] = useState<number[]>([]);
   const [articleHistoryIndex, setArticleHistoryIndex] = useState<number>(-1);
 
@@ -100,19 +88,6 @@ function App() {
       localStorage.setItem('german_vocab_flashcards', JSON.stringify(vocab));
     }
   }, [vocab]);
-
-  // Theme effect
-  React.useEffect(() => {
-    document.body.classList.toggle('dark-mode', theme === 'dark');
-    document.body.classList.toggle('nord-mode', theme === 'nord');
-    localStorage.setItem('german_vocab_theme', theme);
-  }, [theme]);
-
-  React.useEffect(() => {
-    nordThemes.forEach(t => document.body.classList.remove(`nord-${t.key}`));
-    document.body.classList.add(`nord-${nordTheme}`);
-    localStorage.setItem('german_vocab_nord_theme', nordTheme);
-  }, [nordTheme]);
 
   const handleWordClick = () => {
     setShowEnglish(s => !s);
@@ -246,14 +221,6 @@ function App() {
     setSeen(new Set());
   }, [vocab]);
 
-  // Theme icons for Nord variants
-  const nordThemeIcons: Record<string, string> = {
-    polarNight: '🌑',
-    snowStorm: '❄️',
-    frost: '💧',
-    aurora: '🌈',
-  };
-
   // Article mode: always use der, die, das in fixed order
   function getArticleChoices(_correct: string) {
     return ['der', 'die', 'das'];
@@ -261,23 +228,8 @@ function App() {
 
   // UI for mode selection
   return (
-    <div className={`App gradient-bg${theme === 'dark' ? ' dark-mode' : theme === 'nord' ? ' nord-mode' : ''}`} style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start' }}>
+    <div className="gradient-bg">
       <h1 className="app-title">Der Wortschatz</h1>
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1.2rem' }}>
-        <div style={{ display: 'flex', gap: '0.7rem', marginRight: '1.2rem' }}>
-          {nordThemes.map(t => (
-            <button
-              key={t.key}
-              className={`theme-icon-btn${nordTheme === t.key ? ' active' : ''}`}
-              title={t.label}
-              onClick={() => setNordTheme(t.key)}
-              style={{ fontSize: '1.5rem', border: 'none', background: 'none', cursor: 'pointer', padding: '0.3rem', opacity: nordTheme === t.key ? '1' : '0.6', transition: 'opacity 0.2s' }}
-            >
-              {nordThemeIcons[t.key]}
-            </button>
-          ))}
-        </div>
-      </div>
       <div className="progress-bar-legend">
         <span className="legend-item">
           <span className="legend-color legend-seen-color"></span>
@@ -411,11 +363,7 @@ function ArticleCard({ vocab, getArticleChoices, setArticleGuess, articleGuess, 
             </button>
           ))}
         </div>
-        {showEnglish && articleAnswered && (
-          <span className={`article-feedback ${articleCorrect ? 'correct' : 'incorrect'}`} style={{ fontWeight: 700, fontSize: '1.3rem', marginLeft: '1rem' }}>
-            {articleCorrect ? '✓' : '✗'} {article}
-          </span>
-        )}
+        {/* Article correctness is now shown through button colors only */}
       </div>
     </>
   );
