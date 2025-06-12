@@ -128,21 +128,30 @@ body {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   color: var(--text-primary);
   background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Action button gradients */
 .known-btn {
-  background: var(--btn-known);
+  background: linear-gradient(135deg, var(--btn-known) 0%, #8fbcbb 100%);
 }
 
 .revisit-btn {
-  background: var(--btn-revisit);
+  background: linear-gradient(135deg, var(--btn-revisit) 0%, #ebcb8b 100%);
 }
 
 .next-btn, .back-btn {
-  background: var(--btn-nav);
+  background: linear-gradient(135deg, var(--btn-nav) 0%, #81a1c1 100%);
+}
+
+/* Action button hover effects */
+.known-btn:hover, .revisit-btn:hover, .next-btn:hover, .back-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  filter: brightness(1.1);
 }
 
 .tip-text {
