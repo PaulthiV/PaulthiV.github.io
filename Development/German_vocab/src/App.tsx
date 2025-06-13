@@ -24,12 +24,15 @@ function parseVocabFile(content: string): VocabPair[] {
     .filter(line => line && !line.startsWith('//'));
   const vocabMap = new Map<string, Set<string>>();
   for (const line of lines) {
-    const [german, english] = line.split(' - ');
-    if (german && english) {
-      const key = german.trim();
-      const value = english.trim();
-      if (!vocabMap.has(key)) vocabMap.set(key, new Set());
-      vocabMap.get(key)!.add(value);
+    // Fix: Use the first ' - ' as the separator, in case the English part contains ' - '
+    const sepIndex = line.indexOf(' - ');
+    if (sepIndex !== -1) {
+      const german = line.slice(0, sepIndex).trim();
+      const english = line.slice(sepIndex + 3).trim();
+      if (german && english) {
+        if (!vocabMap.has(german)) vocabMap.set(german, new Set());
+        vocabMap.get(german)!.add(english);
+      }
     }
   }
   return Array.from(vocabMap.entries()).map(([german, englishSet]) => ({
@@ -254,11 +257,15 @@ function App() {
         <div key={current} className="flashcard card-animate">
           {mode === 'full' ? (
             <>
-              <div className="german-word" onClick={handleWordClick} title="Click or press Space to reveal">
+              <div className="german-word" onClick={handleWordClick} title="Click or press Space to reveal" style={{ cursor: 'pointer' }}>
                 {vocab[current].german}
               </div>
               <div className="english-area">
-                {showEnglish && <div className="english-word">{vocab[current].english}</div>}
+                {showEnglish && (
+                  <div className="english-word" style={{ fontSize: '2rem', color: '#ebcb8b', fontWeight: 600 }}>
+                    {vocab[current].english || <span style={{ color: '#888', fontWeight: 400 }}>[No translation]</span>}
+                  </div>
+                )}
               </div>
             </>
           ) : (
@@ -336,7 +343,9 @@ function ArticleCard({
       {/* English translation appears above the article buttons */}
       <div className="english-area">
         {showEnglish && (
-          <span className="english-word">{vocab.english}</span>
+          <span className="english-word" style={{ fontSize: '2rem', color: '#ebcb8b', fontWeight: 600 }}>
+            {vocab.english || <span style={{ color: '#888', fontWeight: 400 }}>[No translation]</span>}
+          </span>
         )}
       </div>
       <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', marginTop: '1rem' }}>
