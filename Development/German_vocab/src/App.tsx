@@ -187,6 +187,35 @@ function App() {
     return () => window.removeEventListener('keydown', handler);
   }, [vocab, current, showEnglish]);
 
+  // Add swipe gesture support for mobile
+  React.useEffect(() => {
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const minSwipeDistance = 50;
+    function handleTouchStart(e: TouchEvent) {
+      touchStartX = e.changedTouches[0].screenX;
+    }
+    function handleTouchEnd(e: TouchEvent) {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchEndX - touchStartX;
+      if (Math.abs(diff) > minSwipeDistance) {
+        if (diff > 0) {
+          // Swipe right: previous card
+          prevCard();
+        } else {
+          // Swipe left: next card
+          nextCard();
+        }
+      }
+    }
+    window.addEventListener('touchstart', handleTouchStart);
+    window.addEventListener('touchend', handleTouchEnd);
+    return () => {
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [current, vocab, mode, reviewMode, articleHistoryIndex, articleHistory, seen, revisit, showEnglish]);
+
   const markKnown = () => {
     if (current !== null) {
       setKnown(prev => new Set(prev).add(current));

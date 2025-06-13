@@ -59,53 +59,42 @@ body {
 
 /* Flashcard */
 .flashcard {
-  background: var(--card-bg);
-  border: 1px solid #434c5e;
-  border-radius: 12px;
-  box-shadow: 0 12px 40px var(--card-shadow);
-  padding: 3rem 2rem;
-  margin: 2rem auto;
-  width: 100%;
-  max-width: 600px;
-  min-height: 300px;
+  background: rgba(46, 52, 64, 0.95);
+  border-radius: 2rem;
+  box-shadow: 0 4px 32px 0 #2e3440cc;
+  padding: 2.5rem 1.2rem 2rem 1.2rem;
+  margin: 2.5rem auto 2rem auto;
+  max-width: 420px;
+  width: 95vw;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .flashcard {
+    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+    margin: 1.2rem 0.2rem 1.2rem 0.2rem;
+    max-width: 98vw;
+    width: 98vw;
+    border-radius: 1.2rem;
+  }
+  .german-word {
+    font-size: 2.1rem;
+    word-break: break-word;
+    text-align: center;
+  }
 }
 
 .german-word {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  color: var(--text-primary);
-  cursor: pointer;
-  letter-spacing: -0.02em;
-  user-select: none;
+  color: #eceff4;
+  margin-bottom: 1.2rem;
+  word-break: break-word;
   text-align: center;
-  height: 120px; /* Fixed height */
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.2s ease;
-}
-
-.english-area {
-  height: 80px; /* Fixed height */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-}
-
-.english-word {
-  font-size: 2rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  opacity: 0.9;
-  letter-spacing: -0.01em;
 }
 
 /* Action buttons */
@@ -303,10 +292,19 @@ body {
     hyphens: auto;
   }
 
+  .english-area {
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+  }
+
   .english-word {
-    font-size: 2rem;
-    line-height: 1.3;
-    word-break: break-word;
+    opacity: 1;
+    transition: none;
+    min-width: 0;
+    text-align: inherit;
   }
 
   .action-buttons {
