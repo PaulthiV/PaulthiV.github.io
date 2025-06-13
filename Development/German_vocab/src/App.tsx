@@ -260,12 +260,10 @@ function App() {
               <div className="german-word" onClick={handleWordClick} title="Click or press Space to reveal" style={{ cursor: 'pointer' }}>
                 {vocab[current].german}
               </div>
-              <div className="english-area">
-                {showEnglish && (
-                  <div className="english-word" style={{ fontSize: '2rem', color: '#ebcb8b', fontWeight: 600 }}>
-                    {vocab[current].english || <span style={{ color: '#888', fontWeight: 400 }}>[No translation]</span>}
-                  </div>
-                )}
+              <div className="english-area" style={{ minHeight: '2.5em', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: showEnglish ? '1.5rem' : '0.5rem' }}>
+                <div className="english-word" style={{ fontSize: '2rem', color: '#ebcb8b', fontWeight: 600, opacity: showEnglish ? 1 : 0, transition: 'opacity 0.25s', minHeight: '1em' }}>
+                  {vocab[current].english || <span style={{ color: '#888', fontWeight: 400 }}>[No translation]</span>}
+                </div>
               </div>
             </>
           ) : (
@@ -275,8 +273,6 @@ function App() {
               getArticleChoices={getArticleChoices}
               setArticleGuess={setArticleGuess}
               articleGuess={articleGuess}
-              setShowEnglish={setShowEnglish}
-              showEnglish={showEnglish}
             />
           )}
           {/* Flip: Next/Back on top, Known/Revisit below */}
@@ -314,39 +310,36 @@ function App() {
   );
 }
 
-// Remove splitArticle from inside ArticleCard, use the one above
+// Remove showEnglish from ArticleCard props and usage
 function ArticleCard({
   vocab,
   getArticleChoices,
   setArticleGuess,
   articleGuess,
-  setShowEnglish,
-  showEnglish,
 }: {
   vocab: VocabPair,
   getArticleChoices: (correct: string) => string[],
   setArticleGuess: (val: string) => void,
   articleGuess: string,
-  setShowEnglish: (val: boolean) => void,
-  showEnglish: boolean
 }) {
   const article = splitArticle(vocab.german).article;
   const word = splitArticle(vocab.german).word;
   const choices = getArticleChoices(article);
   const articleAnswered = !!articleGuess;
 
+  // Add local state for showEnglish in ArticleCard
+  const [showArticleEnglish, setShowArticleEnglish] = React.useState(false);
+
   return (
     <div>
-      <div className="german-word">
+      <div className="german-word" onClick={() => setShowArticleEnglish(v => !v)} title="Click or press to reveal/collapse English" style={{ cursor: 'pointer' }}>
         {`___${word}`}
       </div>
       {/* English translation appears above the article buttons */}
-      <div className="english-area">
-        {showEnglish && (
-          <span className="english-word" style={{ fontSize: '2rem', color: '#ebcb8b', fontWeight: 600 }}>
-            {vocab.english || <span style={{ color: '#888', fontWeight: 400 }}>[No translation]</span>}
-          </span>
-        )}
+      <div className="english-area" style={{ minHeight: '2.5em', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: showArticleEnglish ? '1.5rem' : '0.5rem' }}>
+        <span className="english-word" style={{ fontSize: '2rem', color: '#ebcb8b', fontWeight: 600, opacity: showArticleEnglish ? 1 : 0, transition: 'opacity 0.25s', minHeight: '1em' }}>
+          {vocab.english || <span style={{ color: '#888', fontWeight: 400 }}>[No translation]</span>}
+        </span>
       </div>
       <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', marginTop: '1rem' }}>
         {choices.map(choice => (
@@ -356,7 +349,7 @@ function ArticleCard({
             disabled={articleAnswered}
             onClick={() => {
               setArticleGuess(choice);
-              setShowEnglish(true);
+              setShowArticleEnglish(true);
             }}
           >
             {choice}
