@@ -341,7 +341,7 @@ function ArticleCard({
           {vocab.english || <span style={{ color: '#888', fontWeight: 400 }}>[No translation]</span>}
         </span>
       </div>
-      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', marginTop: '1rem' }}>
+      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', marginTop: '1rem', marginBottom: '2.2rem' }}>
         {choices.map(choice => (
           <button
             key={choice}
