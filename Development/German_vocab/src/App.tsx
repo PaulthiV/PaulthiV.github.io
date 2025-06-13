@@ -6,6 +6,16 @@ interface VocabPair {
   english: string;
 }
 
+// Move splitArticle outside ArticleCard so it is accessible
+function splitArticle(german: string) {
+  const articleList = ['der', 'die', 'das'];
+  const parts = german.split(' ');
+  if (parts.length > 1 && articleList.includes(parts[0].toLowerCase())) {
+    return { article: parts[0], word: parts.slice(1).join(' ') };
+  }
+  return { article: '', word: german };
+}
+
 function parseVocabFile(content: string): VocabPair[] {
   // Parse and group by unique German word, collecting all English meanings
   const lines = content
@@ -40,18 +50,6 @@ function App() {
   const [reviewMode, setReviewMode] = useState(false);
   const [articleHistory, setArticleHistory] = useState<number[]>([]);
   const [articleHistoryIndex, setArticleHistoryIndex] = useState<number>(-1);
-
-  // Only use der/die/das for article mode
-  const articleList = ['der', 'die', 'das'];
-
-  // Helper to split article from word
-  function splitArticle(german: string) {
-    const parts = german.split(' ');
-    if (parts.length > 1 && articleList.includes(parts[0].toLowerCase())) {
-      return { article: parts[0], word: parts.slice(1).join(' ') };
-    }
-    return { article: '', word: german };
-  }
 
   // Helper to get indices of vocab with articles
   function getArticleIndices() {
@@ -309,7 +307,15 @@ function App() {
   );
 }
 
-function ArticleCard({ vocab, getArticleChoices, setArticleGuess, articleGuess, setShowEnglish, showEnglish }: {
+// Remove splitArticle from inside ArticleCard, use the one above
+function ArticleCard({
+  vocab,
+  getArticleChoices,
+  setArticleGuess,
+  articleGuess,
+  setShowEnglish,
+  showEnglish,
+}: {
   vocab: VocabPair,
   getArticleChoices: (correct: string) => string[],
   setArticleGuess: (val: string) => void,
@@ -317,53 +323,38 @@ function ArticleCard({ vocab, getArticleChoices, setArticleGuess, articleGuess, 
   setShowEnglish: (val: boolean) => void,
   showEnglish: boolean
 }) {
-  const articleList = ['der', 'die', 'das'];
-  function splitArticle(german: string) {
-    const parts = german.split(' ');
-    if (parts.length > 1 && articleList.includes(parts[0].toLowerCase())) {
-      return { article: parts[0], word: parts.slice(1).join(' ') };
-    }
-    return { article: '', word: german };
-  }
-  const { article, word } = splitArticle(vocab.german);
-  const [articleAnswered, setArticleAnswered] = React.useState(false);
-  const [choices, setChoices] = React.useState<string[]>([]);
-  React.useEffect(() => {
-    setChoices(article ? getArticleChoices(article) : []);
-    setArticleAnswered(false);
-    setArticleGuess('');
-    setShowEnglish(false);
-    // eslint-disable-next-line
-  }, [vocab.german]);
-  if (!article) {
-    return <div></div>;
-  }
+  const article = splitArticle(vocab.german).article;
+  const word = splitArticle(vocab.german).word;
+  const choices = getArticleChoices(article);
+  const articleAnswered = !!articleGuess;
+
   return (
-    <>
+    <div>
       <div className="german-word">
-        <span className="article-blank">{'___ '}</span>{word}
+        {`___${word}`}
       </div>
+      {/* English translation appears above the article buttons */}
       <div className="english-area">
-        {showEnglish && <div className="english-word">{vocab.english}</div>}
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', marginTop: '1rem' }}>
-          {choices.map(choice => (
-            <button
-              key={choice}
-              className={`article-choice-btn${articleAnswered && choice === article ? ' correct' : ''}${articleAnswered && choice !== article && choice === articleGuess ? ' incorrect' : ''}`}
-              disabled={articleAnswered}
-              onClick={() => {
-                setArticleGuess(choice);
-                setArticleAnswered(true);
-                setShowEnglish(true);
-              }}
-            >
-              {choice}
-            </button>
-          ))}
-        </div>
-        {/* Article correctness is now shown through button colors only */}
+        {showEnglish && (
+          <span className="english-word">{vocab.english}</span>
+        )}
       </div>
-    </>
+      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', marginTop: '1rem' }}>
+        {choices.map(choice => (
+          <button
+            key={choice}
+            className={`article-choice-btn${articleAnswered && choice === article ? ' correct' : ''}${articleAnswered && choice !== article && choice === articleGuess ? ' incorrect' : ''}`}
+            disabled={articleAnswered}
+            onClick={() => {
+              setArticleGuess(choice);
+              setShowEnglish(true);
+            }}
+          >
+            {choice}
+          </button>
+        ))}
+      </div>
+    </div>
   );
 }
 
