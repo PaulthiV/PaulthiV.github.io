@@ -16,24 +16,6 @@ function splitArticle(german: string) {
   return { article: '', word: german };
 }
 
-function parseVocabFile(content: string): VocabPair[] {
-  // Parse each valid line as a separate flashcard
-  return content
-    .split('\n')
-    .map(line => line.trim())
-    .filter(line => line && !line.startsWith('//'))
-    .map(line => {
-      const sepIndex = line.indexOf(' - ');
-      if (sepIndex !== -1) {
-        const german = line.slice(0, sepIndex).trim();
-        const english = line.slice(sepIndex + 3).trim();
-        return { german, english };
-      }
-      return { german: line, english: '' };
-    })
-    .filter(pair => pair.german); // Only keep lines with a German word
-}
-
 // Helper to get all .txt files in vocab folder
 async function loadAllVocabFiles(): Promise<string[]> {
   const files = [
