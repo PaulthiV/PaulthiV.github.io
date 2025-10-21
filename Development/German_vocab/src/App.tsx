@@ -340,6 +340,28 @@ function App() {
                   <tr><td>Dativ</td><td>einem</td><td>einer</td><td>einem</td><td>keinen</td></tr>
                 </tbody>
               </table>
+              <h3>Possessivpronomen</h3>
+              <table style={{borderCollapse: 'collapse', marginBottom: '1.5rem'}}>
+                <thead>
+                  <tr style={{background: '#3b4252'}}>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Person</th>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Maskulin</th>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Feminin</th>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Neutral</th>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Plural</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>ich</td><td>meinem</td><td>meiner</td><td>meinem</td><td>meinen</td></tr>
+                  <tr><td>du</td><td>deinem</td><td>deiner</td><td>deinem</td><td>deinen</td></tr>
+                  <tr><td>er</td><td>seinem</td><td>seiner</td><td>seinem</td><td>seinen</td></tr>
+                  <tr><td>sie (Singular)</td><td>ihrem</td><td>ihrer</td><td>ihrem</td><td>ihren</td></tr>
+                  <tr><td>es</td><td>seinem</td><td>seiner</td><td>seinem</td><td>seinen</td></tr>
+                  <tr><td>wir</td><td>unserem</td><td>unserer</td><td>unserem</td><td>unseren</td></tr>
+                  <tr><td>ihr</td><td>eurem</td><td>eurer</td><td>eurem</td><td>euren</td></tr>
+                  <tr><td>sie (Plural)</td><td>ihrem</td><td>ihrer</td><td>ihrem</td><td>ihren</td></tr>
+                </tbody>
+              </table>
             </div>
             <button onClick={() => setShowGrammar(false)} style={{background: '#88c0d0', color: '#2e3440', border: 'none', padding: '0.7rem 1.5rem', borderRadius: '0.5rem', fontWeight: 600, cursor: 'pointer'}}>Close</button>
           </div>
