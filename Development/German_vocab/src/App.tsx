@@ -411,54 +411,54 @@ function App() {
             <h2 style={{marginTop: 0}}>Noun Endings & Article Rules</h2>
             <div style={{marginBottom: '2rem'}}>
               <h3>Artikelbestimmung</h3>
-              <h4 style={{marginTop:'1.2rem'}}>die</h4>
-              <div style={{marginBottom:'1rem'}}>
+              <h4 style={{fontSize:'1.6rem', fontWeight:800, marginTop:'0.7rem', marginBottom:'0.1rem', color:'#eceff4', letterSpacing:'0.01em'}}>die</h4>
+              <div style={{marginBottom:'1.1rem'}}>
                 <strong>-ung</strong> (always feminine):<br/>
                 <span style={{color:'#ebcb8b'}}>die Ausstellung, die Aufteilung, die Einteilung, die Bedeutung, die Erklärung</span>
               </div>
-              <div style={{marginBottom:'1rem'}}>
+              <div style={{marginBottom:'1.1rem'}}>
                 <strong>-keit</strong> (always feminine):<br/>
                 <span style={{color:'#ebcb8b'}}>die Möglichkeit, die Wichtigkeit, die Freundlichkeit, die Schnelligkeit</span>
               </div>
-              <div style={{marginBottom:'1rem'}}>
+              <div style={{marginBottom:'1.1rem'}}>
                 <strong>-heit</strong> (always feminine):<br/>
                 <span style={{color:'#ebcb8b'}}>die Freiheit, die Schönheit, die Gesundheit, die Wahrheit</span>
               </div>
-              <div style={{marginBottom:'1rem'}}>
+              <div style={{marginBottom:'1.1rem'}}>
                 <strong>-schaft</strong> (always feminine):<br/>
                 <span style={{color:'#ebcb8b'}}>die Freundschaft, die Mannschaft, die Landschaft, die Wissenschaft</span>
               </div>
-              <div style={{marginBottom:'1rem'}}>
+              <div style={{marginBottom:'1.1rem'}}>
                 <strong>-ion</strong> (always feminine):<br/>
                 <span style={{color:'#ebcb8b'}}>die Nation, die Funktion, die Diskussion, die Position</span>
               </div>
-              <div style={{marginBottom:'1rem'}}>
+              <div style={{marginBottom:'1.1rem'}}>
                 <strong>-e</strong> (usually feminine, ~90%):<br/>
                 <span style={{color:'#ebcb8b'}}>die Blume, die Lampe, die Sprache, die Reise</span>
                 <br/>
                 <span style={{color:'#a3be8c'}}>Exceptions (masculine/neuter): der Junge, der Name, das Ende, das Auge</span>
               </div>
-              <h4 style={{marginTop:'1.2rem'}}>der</h4>
-              <div style={{marginBottom:'1rem'}}>
+              <h4 style={{fontSize:'1.6rem', fontWeight:800, marginTop:'0.7rem', marginBottom:'0.1rem', color:'#eceff4', letterSpacing:'0.01em'}}>der</h4>
+              <div style={{marginBottom:'1.1rem'}}>
                 <strong>-ig</strong> (usually masculine):<br/>
                 <span style={{color:'#ebcb8b'}}>der Honig, der König, der Essig, der Käfig</span>
                 <br/>
                 <span style={{color:'#a3be8c'}}>Adjectives: mutig, lustig (not nouns)</span>
               </div>
-              <div style={{marginBottom:'1rem'}}>
+              <div style={{marginBottom:'1.1rem'}}>
                 <strong>-ling</strong> (always masculine):<br/>
                 <span style={{color:'#ebcb8b'}}>der Lehrling, der Zwilling, der Schmetterling, der Feigling</span>
               </div>
-              <div style={{marginBottom:'1rem'}}>
+              <div style={{marginBottom:'1.1rem'}}>
                 <strong>-or</strong> (always masculine):<br/>
                 <span style={{color:'#ebcb8b'}}>der Doktor, der Motor, der Direktor, der Autor</span>
               </div>
-              <h4 style={{marginTop:'1.2rem'}}>das</h4>
-              <div style={{marginBottom:'1rem'}}>
+              <h4 style={{fontSize:'1.6rem', fontWeight:800, marginTop:'0.7rem', marginBottom:'0.1rem', color:'#eceff4', letterSpacing:'0.01em'}}>das</h4>
+              <div style={{marginBottom:'1.1rem'}}>
                 <strong>-ment</strong> (always neuter):<br/>
                 <span style={{color:'#ebcb8b'}}>das Instrument, das Dokument, das Experiment, das Element</span>
               </div>
-              <div style={{marginBottom:'1rem'}}>
+              <div style={{marginBottom:'1.1rem'}}>
                 <strong>-um</strong> (always neuter):<br/>
                 <span style={{color:'#ebcb8b'}}>das Zentrum, das Museum, das Datum, das Album</span>
               </div>
