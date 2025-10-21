@@ -92,6 +92,7 @@ function App() {
   const [reviewMode, setReviewMode] = useState(false);
   const [articleHistory, setArticleHistory] = useState<number[]>([]);
   const [articleHistoryIndex, setArticleHistoryIndex] = useState<number>(-1);
+  const [showGrammar, setShowGrammar] = useState(false);
 
   // Helper to get indices of vocab with articles
   function getArticleIndices() {
@@ -298,7 +299,52 @@ function App() {
         <button onClick={() => setMode('full')} className={`mode-btn${mode === 'full' ? ' active' : ''}`}>Full Word</button>
         <button onClick={() => setMode('article')} className={`mode-btn${mode === 'article' ? ' active' : ''}`}>Article Only</button>
         <button onClick={() => setReviewMode(r => !r)} className={`mode-btn${reviewMode ? ' active' : ''}`}>Review ({revisit.size})</button>
+        <button onClick={() => setShowGrammar(true)} className="mode-btn">Grammar Reference</button>
       </div>
+      {showGrammar && (
+        <div className="grammar-modal" style={{position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.7)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <div style={{background: '#2e3440', color: '#eceff4', padding: '2rem', borderRadius: '1rem', maxWidth: '90vw', maxHeight: '80vh', overflowY: 'auto', boxShadow: '0 2px 16px #0008'}}>
+            <h2 style={{marginTop: 0}}>Grammar Reference</h2>
+            <div style={{marginBottom: '2rem'}}>
+              <h3>Definite Articles</h3>
+              <table style={{borderCollapse: 'collapse', marginBottom: '1.5rem'}}>
+                <thead>
+                  <tr style={{background: '#3b4252'}}>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Case</th>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Maskulin</th>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Feminin</th>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Neutral</th>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Plural</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Nominativ</td><td>der</td><td>die</td><td>das</td><td>die</td></tr>
+                  <tr><td>Akkusativ</td><td>den</td><td>die</td><td>das</td><td>die</td></tr>
+                  <tr><td>Dativ</td><td>dem</td><td>der</td><td>dem</td><td>den</td></tr>
+                </tbody>
+              </table>
+              <h3>Indefinite Articles</h3>
+              <table style={{borderCollapse: 'collapse', marginBottom: '1.5rem'}}>
+                <thead>
+                  <tr style={{background: '#3b4252'}}>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Case</th>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Maskulin</th>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Feminin</th>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Neutral</th>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Plural</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Nominativ</td><td>ein</td><td>eine</td><td>ein</td><td>kein</td></tr>
+                  <tr><td>Akkusativ</td><td>einen</td><td>eine</td><td>ein</td><td>kein</td></tr>
+                  <tr><td>Dativ</td><td>einem</td><td>einer</td><td>einem</td><td>keinen</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <button onClick={() => setShowGrammar(false)} style={{background: '#88c0d0', color: '#2e3440', border: 'none', padding: '0.7rem 1.5rem', borderRadius: '0.5rem', fontWeight: 600, cursor: 'pointer'}}>Close</button>
+          </div>
+        </div>
+      )}
       {vocab.length > 0 && current !== null && !reviewMode && (
         <div key={current} className="flashcard card-animate">
           {mode === 'full' ? (
