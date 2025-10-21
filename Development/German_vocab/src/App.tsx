@@ -432,20 +432,35 @@ function App() {
                   </thead>
                   <tbody>
                     <tr><td>People</td><td>der Mann, die Frau, das Kind</td><td>Masculine/Feminine/Neuter</td></tr>
+                    <tr style={{height:'0.5em'}}><td colSpan={3}><hr style={{border:'none', borderTop:'1px solid #4c566a', margin:'0'}} /></td></tr>
                     <tr><td>Animals</td><td>der Hund, die Katze, das Pferd</td><td>Masculine/Feminine/Neuter</td></tr>
+                    <tr style={{height:'0.5em'}}><td colSpan={3}><hr style={{border:'none', borderTop:'1px solid #4c566a', margin:'0'}} /></td></tr>
                     <tr><td>Young beings</td><td>das Mädchen, das Kätzchen</td><td>Neuter</td></tr>
+                    <tr style={{height:'0.5em'}}><td colSpan={3}><hr style={{border:'none', borderTop:'1px solid #4c566a', margin:'0'}} /></td></tr>
                     <tr><td>Collectives</td><td>das Team, die Gruppe, das Publikum</td><td>Usually Neuter or Feminine</td></tr>
+                    <tr style={{height:'0.5em'}}><td colSpan={3}><hr style={{border:'none', borderTop:'1px solid #4c566a', margin:'0'}} /></td></tr>
                     <tr><td>Countries, Cities</td><td>das Deutschland, das Berlin</td><td>Neuter (most)</td></tr>
+                    <tr style={{height:'0.5em'}}><td colSpan={3}><hr style={{border:'none', borderTop:'1px solid #4c566a', margin:'0'}} /></td></tr>
                     <tr><td>Metals</td><td>das Gold, das Silber</td><td>Neuter</td></tr>
+                    <tr style={{height:'0.5em'}}><td colSpan={3}><hr style={{border:'none', borderTop:'1px solid #4c566a', margin:'0'}} /></td></tr>
                     <tr><td>Most Trees/Flowers</td><td>die Eiche, die Rose</td><td>Feminine</td></tr>
+                    <tr style={{height:'0.5em'}}><td colSpan={3}><hr style={{border:'none', borderTop:'1px solid #4c566a', margin:'0'}} /></td></tr>
                     <tr><td>Most Rivers (in Germany)</td><td>die Donau, die Elbe</td><td>Feminine</td></tr>
+                    <tr style={{height:'0.5em'}}><td colSpan={3}><hr style={{border:'none', borderTop:'1px solid #4c566a', margin:'0'}} /></td></tr>
                     <tr><td>Cars/Makes</td><td>der BMW, der Mercedes</td><td>Masculine</td></tr>
+                    <tr style={{height:'0.5em'}}><td colSpan={3}><hr style={{border:'none', borderTop:'1px solid #4c566a', margin:'0'}} /></td></tr>
                     <tr><td>Days, Months, Seasons</td><td>der Montag, der Januar, der Sommer</td><td>Masculine</td></tr>
+                    <tr style={{height:'0.5em'}}><td colSpan={3}><hr style={{border:'none', borderTop:'1px solid #4c566a', margin:'0'}} /></td></tr>
                     <tr><td>Numbers</td><td>die Eins, die Sieben</td><td>Feminine</td></tr>
+                    <tr style={{height:'0.5em'}}><td colSpan={3}><hr style={{border:'none', borderTop:'1px solid #4c566a', margin:'0'}} /></td></tr>
                     <tr><td>Letters</td><td>das A, das B</td><td>Neuter</td></tr>
+                    <tr style={{height:'0.5em'}}><td colSpan={3}><hr style={{border:'none', borderTop:'1px solid #4c566a', margin:'0'}} /></td></tr>
                     <tr><td>Most Non-German Rivers</td><td>der Nil, der Amazonas</td><td>Masculine</td></tr>
+                    <tr style={{height:'0.5em'}}><td colSpan={3}><hr style={{border:'none', borderTop:'1px solid #4c566a', margin:'0'}} /></td></tr>
                     <tr><td>Most Mountains</td><td>der Mount Everest, der Kilimandscharo</td><td>Masculine</td></tr>
+                    <tr style={{height:'0.5em'}}><td colSpan={3}><hr style={{border:'none', borderTop:'1px solid #4c566a', margin:'0'}} /></td></tr>
                     <tr><td>Most Alcoholic Drinks</td><td>der Wein, der Schnaps</td><td>Masculine (except das Bier)</td></tr>
+                    <tr style={{height:'0.5em'}}><td colSpan={3}><hr style={{border:'none', borderTop:'1px solid #4c566a', margin:'0'}} /></td></tr>
                   </tbody>
                 </table>
               </div>
