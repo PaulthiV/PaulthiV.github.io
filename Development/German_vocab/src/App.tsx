@@ -383,51 +383,20 @@ function App() {
                 Ich lege das Buch auf den Tisch.<br/>
               </div>
               <h3>Präpositionen, die immer den Akkusativ verlangen</h3>
-              <div style={{display:'flex', gap:'2rem', marginBottom:'1.5rem'}}>
-                <ul style={{margin:0, paddingLeft:'1.2em', listStyle:'disc'}}>
-                  <li>durch</li>
-                  <li>für</li>
-                  <li>gegen</li>
-                  <li>ohne</li>
-                </ul>
-                <ul style={{margin:0, paddingLeft:'1.2em', listStyle:'disc'}}>
-                  <li>um</li>
-                  <li>bis</li>
-                  <li>entlang</li>
-                </ul>
+              <div style={{marginBottom:'1.5rem', color:'#eceff4'}}>
+                <span>durch, für, gegen, ohne, um, bis, entlang</span>
               </div>
               <h3>Verben, die immer den Akkusativ verlangen</h3>
-              <div style={{display:'flex', gap:'2rem', marginBottom:'1.5rem'}}>
-                <ul style={{margin:0, paddingLeft:'1.2em', listStyle:'disc'}}>
-                  <li>sehen</li><li>finden</li><li>brauchen</li><li>kaufen</li><li>lieben</li><li>mögen</li><li>nehmen</li><li>lesen</li><li>trinken</li><li>essen</li><li>hören</li><li>vergessen</li><li>verstehen</li>
-                </ul>
-                <ul style={{margin:0, paddingLeft:'1.2em', listStyle:'disc'}}>
-                  <li>lernen</li><li>öffnen</li><li>schließen</li><li>tragen</li><li>suchen</li><li>bekommen</li><li>warten (auf)</li><li>fragen</li><li>besuchen</li><li>spielen</li><li>machen</li><li>bauen</li><li>putzen</li><li>backen</li>
-                </ul>
+              <div style={{marginBottom:'1.5rem', color:'#eceff4'}}>
+                <span>sehen, finden, brauchen, kaufen, lieben, mögen, nehmen, lesen, trinken, essen, hören, vergessen, verstehen, lernen, öffnen, schließen, tragen, suchen, bekommen, warten (auf), fragen, besuchen, spielen, machen, bauen, putzen, backen</span>
               </div>
               <h3>Präpositionen, die immer den Dativ verlangen</h3>
-              <div style={{display:'flex', gap:'2rem', marginBottom:'1.5rem'}}>
-                <ul style={{margin:0, paddingLeft:'1.2em', listStyle:'disc'}}>
-                  <li>aus</li>
-                  <li>bei</li>
-                  <li>mit</li>
-                  <li>nach</li>
-                </ul>
-                <ul style={{margin:0, paddingLeft:'1.2em', listStyle:'disc'}}>
-                  <li>seit</li>
-                  <li>von</li>
-                  <li>zu</li>
-                  <li>gegenüber</li>
-                </ul>
+              <div style={{marginBottom:'1.5rem', color:'#eceff4'}}>
+                <span>aus, bei, mit, nach, seit, von, zu, gegenüber</span>
               </div>
               <h3>Häufige Verben, die immer den Dativ verlangen</h3>
-              <div style={{display:'flex', gap:'2rem', marginBottom:'1.5rem'}}>
-                <ul style={{margin:0, paddingLeft:'1.2em', listStyle:'disc'}}>
-                  <li>helfen</li><li>danken</li><li>gehören</li><li>glauben</li><li>folgen</li><li>gefallen</li><li>gratulieren</li><li>vertrauen</li>
-                </ul>
-                <ul style={{margin:0, paddingLeft:'1.2em', listStyle:'disc'}}>
-                  <li>verzeihen</li><li>antworten</li><li>passen</li><li>schmecken</li><li>raten</li><li>zuhören</li><li>wehtun</li><li>fehlen</li>
-                </ul>
+              <div style={{marginBottom:'1.5rem', color:'#eceff4'}}>
+                <span>helfen, danken, gehören, glauben, folgen, gefallen, gratulieren, vertrauen, verzeihen, antworten, passen, schmecken, raten, zuhören, wehtun, fehlen</span>
               </div>
             </div>
             <button onClick={() => setShowGrammar(false)} style={{background: '#88c0d0', color: '#2e3440', border: 'none', padding: '0.7rem 1.5rem', borderRadius: '0.5rem', fontWeight: 600, cursor: 'pointer'}}>Close</button>
