@@ -17,24 +17,81 @@ function splitArticle(german: string) {
 }
 
 function parseVocabFile(content: string): VocabPair[] {
-  // Parse and group by unique German word, collecting all English meanings
-  const lines = content
+  // Parse each valid line as a separate flashcard
+  return content
     .split('\n')
     .map(line => line.trim())
-    .filter(line => line && !line.startsWith('//'));
-  const vocabMap = new Map<string, Set<string>>();
-  for (const line of lines) {
-    // Fix: Use the first ' - ' as the separator, in case the English part contains ' - '
-    const sepIndex = line.indexOf(' - ');
-    if (sepIndex !== -1) {
-      const german = line.slice(0, sepIndex).trim();
-      const english = line.slice(sepIndex + 3).trim();
-      if (german && english) {
-        if (!vocabMap.has(german)) vocabMap.set(german, new Set());
-        vocabMap.get(german)!.add(english);
+    .filter(line => line && !line.startsWith('//'))
+    .map(line => {
+      const sepIndex = line.indexOf(' - ');
+      if (sepIndex !== -1) {
+        const german = line.slice(0, sepIndex).trim();
+        const english = line.slice(sepIndex + 3).trim();
+        return { german, english };
       }
-    }
+      return { german: line, english: '' };
+    })
+    .filter(pair => pair.german); // Only keep lines with a German word
+}
+
+// Helper to get all .txt files in vocab folder
+async function loadAllVocabFiles(): Promise<string[]> {
+  const files = [
+    'egp1_vokabeln.txt',
+    'egp2_vokabeln.txt',
+    'egp3_vokabeln.txt',
+    'egp4_vokabeln_4axTu6oqpDtjsjh.txt',
+    'egp5_vokabeln_sDdVBELLBUJz6cT (1).txt',
+    'egp6_vokabeln_MMkra7odZcPbhdq.txt',
+    'egp7_vokabeln_pw2HZ3yWx1vT9ra.txt',
+    'egp8_vokabeln_VUMsrufxtAUDhGu.txt',
+    'egp9_vokabeln_OYGrMa9GQtM2vml.txt',
+    'egp10_vokabeln_KSbL2hgeP5FmRAX.txt',
+    'egp11_vokabeln_eURodA1aGNgHhxC.txt',
+    'egp12_vokabeln_w491kVBnGVDJdPd.txt',
+    'egp13_vokabeln_zp6jx1uMi6TG0ab.txt',
+    'egp14_vokabeln_0r3zDjVZpSueBkx.txt',
+    'egp15_vokabeln_ii4VDDj4NLe0wMo.txt',
+    'egp16_vokabeln_CGX2hoaA1JsnT08.txt',
+    'egp17_vokabeln_dXUI2f4ZKxhU3jF.txt',
+    'egp18_vokabeln_1rJGDCaPnCyZcQj.txt',
+    'egp19_vokabeln_ZImnXz0Bd0eER7J.txt',
+    'egp20_vokabeln_FFRo0sJEV0Mnhzv.txt',
+    'egp21_vokabeln_RgJkL8UzQrDsaw0.txt',
+    'egp22_vokabeln_Tk6jHsSsDQgLcxS.txt',
+    'egp23_vokabeln_mCoAPn0b6N3GQk3.txt',
+    'egp24_vokabeln_bqCuuuoLWeUjxDT.txt',
+  ];
+  const contents = await Promise.all(
+    files.map(f => fetch(`/vocab/${f}`).then(r => r.ok ? r.text() : ''))
+  );
+  // If all files are empty, use basic.txt as fallback
+  if (contents.every(c => !c.trim())) {
+    const fallback = await fetch('/vocab/basic.txt').then(r => r.ok ? r.text() : '');
+    return [fallback];
   }
+  return contents.filter(c => c.trim());
+}
+
+function parseVocabFiles(contents: string[]): VocabPair[] {
+  // Merge all lines, group by unique German word
+  const vocabMap = new Map<string, Set<string>>();
+  contents.forEach(content => {
+    content.split('\n')
+      .map(line => line.trim())
+      .filter(line => line && !line.startsWith('//'))
+      .forEach(line => {
+        const sepIndex = line.indexOf(' - ');
+        if (sepIndex !== -1) {
+          const german = line.slice(0, sepIndex).trim();
+          const english = line.slice(sepIndex + 3).trim();
+          if (german && english) {
+            if (!vocabMap.has(german)) vocabMap.set(german, new Set());
+            vocabMap.get(german)!.add(english);
+          }
+        }
+      });
+  });
   return Array.from(vocabMap.entries()).map(([german, englishSet]) => ({
     german,
     english: Array.from(englishSet).join('; ')
@@ -59,36 +116,14 @@ function App() {
     return vocab.map((v, i) => ({ i, a: splitArticle(v.german).article })).filter(x => x.a).map(x => x.i);
   }
 
-  // Load vocab from localStorage or from public/vocab/basic.txt on mount
+  // Always fetch from public/vocab/basic.txt, ignore localStorage
   React.useEffect(() => {
-    const saved = localStorage.getItem('german_vocab_flashcards');
-    if (saved) {
-      try {
-        const parsed: VocabPair[] = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          setVocab(parsed);
-          setCurrent(Math.floor(Math.random() * parsed.length));
-          return;
-        }
-      } catch {}
-    }
-    // If not in localStorage, fetch from public/vocab/basic.txt
-    fetch('/vocab/basic.txt')
-      .then(res => res.ok ? res.text() : Promise.reject('Not found'))
-      .then(text => {
-        const parsed = parseVocabFile(text);
-        setVocab(parsed);
-        setCurrent(parsed.length ? Math.floor(Math.random() * parsed.length) : null);
-      })
-      .catch(() => {});
+    loadAllVocabFiles().then(contents => {
+      const parsed = parseVocabFiles(contents);
+      setVocab(parsed);
+      setCurrent(parsed.length ? Math.floor(Math.random() * parsed.length) : null);
+    });
   }, []);
-
-  // Save vocab to localStorage whenever it changes
-  React.useEffect(() => {
-    if (vocab.length > 0) {
-      localStorage.setItem('german_vocab_flashcards', JSON.stringify(vocab));
-    }
-  }, [vocab]);
 
   const handleWordClick = () => {
     setShowEnglish(s => !s);
