@@ -93,6 +93,7 @@ function App() {
   const [articleHistory, setArticleHistory] = useState<number[]>([]);
   const [articleHistoryIndex, setArticleHistoryIndex] = useState<number>(-1);
   const [showGrammar, setShowGrammar] = useState(false);
+  const [showEndings, setShowEndings] = useState(false);
 
   // Helper to get indices of vocab with articles
   function getArticleIndices() {
@@ -300,6 +301,7 @@ function App() {
         <button onClick={() => setMode('article')} className={`mode-btn${mode === 'article' ? ' active' : ''}`}>Article Only</button>
         <button onClick={() => setReviewMode(r => !r)} className={`mode-btn${reviewMode ? ' active' : ''}`}>Review ({revisit.size})</button>
         <button onClick={() => setShowGrammar(true)} className="mode-btn">Grammar Reference</button>
+        <button onClick={() => setShowEndings(true)} className="mode-btn">Noun Endings & Articles</button>
       </div>
       {showGrammar && (
         <div className="grammar-modal" style={{position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.7)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
@@ -400,6 +402,87 @@ function App() {
               </div>
             </div>
             <button onClick={() => setShowGrammar(false)} style={{background: '#88c0d0', color: '#2e3440', border: 'none', padding: '0.7rem 1.5rem', borderRadius: '0.5rem', fontWeight: 600, cursor: 'pointer'}}>Close</button>
+          </div>
+        </div>
+      )}
+      {showEndings && (
+        <div className="grammar-modal" style={{position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.7)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <div style={{background: '#2e3440', color: '#eceff4', padding: '2rem', borderRadius: '1rem', maxWidth: '90vw', maxHeight: '80vh', overflowY: 'auto', boxShadow: '0 2px 16px #0008'}}>
+            <h2 style={{marginTop: 0}}>Noun Endings & Article Rules</h2>
+            <div style={{marginBottom: '2rem'}}>
+              <h3>Artikelbestimmung</h3>
+              <h4 style={{marginTop:'1.2rem'}}>die</h4>
+              <div style={{marginBottom:'1rem'}}>
+                <strong>-ung</strong> (always feminine):<br/>
+                <span style={{color:'#ebcb8b'}}>die Ausstellung, die Aufteilung, die Einteilung, die Bedeutung, die Erklärung</span>
+              </div>
+              <div style={{marginBottom:'1rem'}}>
+                <strong>-keit</strong> (always feminine):<br/>
+                <span style={{color:'#ebcb8b'}}>die Möglichkeit, die Wichtigkeit, die Freundlichkeit, die Schnelligkeit</span>
+              </div>
+              <div style={{marginBottom:'1rem'}}>
+                <strong>-heit</strong> (always feminine):<br/>
+                <span style={{color:'#ebcb8b'}}>die Freiheit, die Schönheit, die Gesundheit, die Wahrheit</span>
+              </div>
+              <div style={{marginBottom:'1rem'}}>
+                <strong>-schaft</strong> (always feminine):<br/>
+                <span style={{color:'#ebcb8b'}}>die Freundschaft, die Mannschaft, die Landschaft, die Wissenschaft</span>
+              </div>
+              <div style={{marginBottom:'1rem'}}>
+                <strong>-ion</strong> (always feminine):<br/>
+                <span style={{color:'#ebcb8b'}}>die Nation, die Funktion, die Diskussion, die Position</span>
+              </div>
+              <div style={{marginBottom:'1rem'}}>
+                <strong>-e</strong> (usually feminine, ~90%):<br/>
+                <span style={{color:'#ebcb8b'}}>die Blume, die Lampe, die Sprache, die Reise</span>
+                <br/>
+                <span style={{color:'#a3be8c'}}>Exceptions (masculine/neuter): der Junge, der Name, das Ende, das Auge</span>
+              </div>
+              <h4 style={{marginTop:'1.2rem'}}>der</h4>
+              <div style={{marginBottom:'1rem'}}>
+                <strong>-ig</strong> (usually masculine):<br/>
+                <span style={{color:'#ebcb8b'}}>der Honig, der König, der Essig, der Käfig</span>
+                <br/>
+                <span style={{color:'#a3be8c'}}>Adjectives: mutig, lustig (not nouns)</span>
+              </div>
+              <div style={{marginBottom:'1rem'}}>
+                <strong>-ling</strong> (always masculine):<br/>
+                <span style={{color:'#ebcb8b'}}>der Lehrling, der Zwilling, der Schmetterling, der Feigling</span>
+              </div>
+              <div style={{marginBottom:'1rem'}}>
+                <strong>-or</strong> (always masculine):<br/>
+                <span style={{color:'#ebcb8b'}}>der Doktor, der Motor, der Direktor, der Autor</span>
+              </div>
+              <h4 style={{marginTop:'1.2rem'}}>das</h4>
+              <div style={{marginBottom:'1rem'}}>
+                <strong>-ment</strong> (always neuter):<br/>
+                <span style={{color:'#ebcb8b'}}>das Instrument, das Dokument, das Experiment, das Element</span>
+              </div>
+              <div style={{marginBottom:'1rem'}}>
+                <strong>-um</strong> (always neuter):<br/>
+                <span style={{color:'#ebcb8b'}}>das Zentrum, das Museum, das Datum, das Album</span>
+              </div>
+              <h3 style={{marginTop:'2rem'}}>Mixed Endings</h3>
+              <div style={{marginBottom:'1rem'}}>
+                <strong>-e</strong> (mostly feminine, but can be masculine/neuter):<br/>
+                <span style={{color:'#ebcb8b'}}>Weiblich: die Blume, die Sonne, die Lampe</span><br/>
+                <span style={{color:'#a3be8c'}}>Maskulin: der Junge, der Name</span><br/>
+                <span style={{color:'#b48ead'}}>Neutral: das Ende, das Auge</span>
+              </div>
+              <div style={{marginBottom:'1rem'}}>
+                <strong>-er</strong> (mostly masculine, but can be neutral/feminine):<br/>
+                <span style={{color:'#ebcb8b'}}>Maskulin: der Lehrer, der Fahrer, der Computer</span><br/>
+                <span style={{color:'#b48ead'}}>Neutral: das Zimmer, das Wasser</span><br/>
+                <span style={{color:'#a3be8c'}}>Weiblich: die Mutter, die Butter</span>
+              </div>
+              <div style={{marginBottom:'1rem'}}>
+                <strong>-el</strong> (often masculine, but can be neutral/feminine):<br/>
+                <span style={{color:'#ebcb8b'}}>Maskulin: der Mantel, der Löffel</span><br/>
+                <span style={{color:'#b48ead'}}>Neutral: das Viertel, das Rätsel</span><br/>
+                <span style={{color:'#a3be8c'}}>Weiblich: die Gabel</span>
+              </div>
+            </div>
+            <button onClick={() => setShowEndings(false)} style={{background: '#88c0d0', color: '#2e3440', border: 'none', padding: '0.7rem 1.5rem', borderRadius: '0.5rem', fontWeight: 600, cursor: 'pointer'}}>Close</button>
           </div>
         </div>
       )}
