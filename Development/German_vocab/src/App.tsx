@@ -279,6 +279,11 @@ function App() {
   return (
     <div className="gradient-bg">
       <h1 className="app-title">Der Wortschatz</h1>
+      <div className="reference-buttons" style={{display:'flex', gap:'1rem', justifyContent:'center', margin:'2rem 0 1.2rem 0'}}>
+        <button onClick={() => setShowGrammar(true)} className="mode-btn">Grammar Reference</button>
+        <button onClick={() => setShowEndings(true)} className="mode-btn">Noun Endings & Articles</button>
+      </div>
+      <hr style={{border:'none', borderTop:'1.5px solid #434c5e', margin:'0 0 2rem 0', width:'60%', marginLeft:'auto', marginRight:'auto', opacity:0.5}} />
       <div className="progress-bar-legend">
         <span className="legend-item">
           <span className="legend-color legend-seen-color"></span>
@@ -300,8 +305,6 @@ function App() {
         <button onClick={() => setMode('full')} className={`mode-btn${mode === 'full' ? ' active' : ''}`}>Full Word</button>
         <button onClick={() => setMode('article')} className={`mode-btn${mode === 'article' ? ' active' : ''}`}>Article Only</button>
         <button onClick={() => setReviewMode(r => !r)} className={`mode-btn${reviewMode ? ' active' : ''}`}>Review ({revisit.size})</button>
-        <button onClick={() => setShowGrammar(true)} className="mode-btn">Grammar Reference</button>
-        <button onClick={() => setShowEndings(true)} className="mode-btn">Noun Endings & Articles</button>
       </div>
       {showGrammar && (
         <div className="grammar-modal" style={{position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.7)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
