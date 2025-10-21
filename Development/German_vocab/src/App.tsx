@@ -412,6 +412,63 @@ function App() {
         <div className="grammar-modal" style={{position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.7)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
           <div style={{background: '#2e3440', color: '#eceff4', padding: '2rem', borderRadius: '1rem', maxWidth: '90vw', maxHeight: '80vh', overflowY: 'auto', boxShadow: '0 2px 16px #0008'}}>
             <h2 style={{marginTop: 0}}>Noun Endings & Article Rules</h2>
+            <div style={{marginBottom: '2.5rem'}}>
+              <h3 style={{fontSize:'1.4rem', fontWeight:800, marginTop:'0.7rem', marginBottom:'0.7rem', color:'#eceff4', letterSpacing:'0.01em'}}>Noun Gender Rules & Groups</h3>
+              <div style={{marginBottom:'1.2rem'}}>
+                <strong>Persons:</strong><br/>
+                <span style={{color:'#ebcb8b'}}>der Mann, der Vater, der Hund</span> (male persons/animals, masculine)<br/>
+                <span style={{color:'#ebcb8b'}}>die Frau, die Mutter, die Katze</span> (female persons/animals, feminine)<br/>
+                <span style={{color:'#ebcb8b'}}>das Kind, das Mädchen, das Kätzchen</span> (young persons/animals, neuter)
+              </div>
+              <div style={{marginBottom:'1.2rem'}}>
+                <strong>Noun Groups (Typical Gender):</strong>
+                <table style={{borderCollapse:'collapse', width:'100%', margin:'0.5rem 0 0.5rem 0', fontSize:'1.1rem', color:'#eceff4', lineHeight:'1.6em'}}>
+                  <thead>
+                    <tr style={{background:'#3b4252'}}>
+                      <th style={{padding:'0.4em 1em', border:'1px solid #4c566a'}}>Group</th>
+                      <th style={{padding:'0.4em 1em', border:'1px solid #4c566a'}}>Examples</th>
+                      <th style={{padding:'0.4em 1em', border:'1px solid #4c566a'}}>Gender/Article</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>People</td><td>der Mann, die Frau, das Kind</td><td>Masculine/Feminine/Neuter</td></tr>
+                    <tr><td>Animals</td><td>der Hund, die Katze, das Pferd</td><td>Masculine/Feminine/Neuter</td></tr>
+                    <tr><td>Young beings</td><td>das Mädchen, das Kätzchen</td><td>Neuter</td></tr>
+                    <tr><td>Collectives</td><td>das Team, die Gruppe, das Publikum</td><td>Usually Neuter or Feminine</td></tr>
+                    <tr><td>Countries, Cities</td><td>das Deutschland, das Berlin</td><td>Neuter (most)</td></tr>
+                    <tr><td>Metals</td><td>das Gold, das Silber</td><td>Neuter</td></tr>
+                    <tr><td>Most Trees/Flowers</td><td>die Eiche, die Rose</td><td>Feminine</td></tr>
+                    <tr><td>Most Rivers (in Germany)</td><td>die Donau, die Elbe</td><td>Feminine</td></tr>
+                    <tr><td>Cars/Makes</td><td>der BMW, der Mercedes</td><td>Masculine</td></tr>
+                    <tr><td>Days, Months, Seasons</td><td>der Montag, der Januar, der Sommer</td><td>Masculine</td></tr>
+                    <tr><td>Numbers</td><td>die Eins, die Sieben</td><td>Feminine</td></tr>
+                    <tr><td>Letters</td><td>das A, das B</td><td>Neuter</td></tr>
+                    <tr><td>Most Non-German Rivers</td><td>der Nil, der Amazonas</td><td>Masculine</td></tr>
+                    <tr><td>Most Mountains</td><td>der Mount Everest, der Kilimandscharo</td><td>Masculine</td></tr>
+                    <tr><td>Most Alcoholic Drinks</td><td>der Wein, der Schnaps</td><td>Masculine (except das Bier)</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div style={{marginBottom:'1.2rem'}}>
+                <strong>Compound Nouns:</strong> Gender is determined by the last word.<br/>
+                <span style={{color:'#ebcb8b'}}>das Haustier</span> (das Tier), <span style={{color:'#ebcb8b'}}>die Tischlampe</span> (die Lampe)
+              </div>
+              <div style={{marginBottom:'1.2rem'}}>
+                <strong>Nouns from Verbs:</strong> Usually neuter.<br/>
+                <span style={{color:'#ebcb8b'}}>das Essen, das Trinken, das Leben</span>
+              </div>
+              <div style={{marginBottom:'1.2rem'}}>
+                <strong>Foreign Words:</strong> Often neuter if ending in <strong>-um, -ment, -ma</strong>.<br/>
+                <span style={{color:'#ebcb8b'}}>das Museum, das Instrument, das Thema</span>
+              </div>
+              <div style={{marginBottom:'1.2rem'}}>
+                <strong>Exceptions:</strong> Some endings have exceptions.<br/>
+                <span style={{color:'#a3be8c'}}>der Name, das Ende, das Auge</span>
+              </div>
+              <div style={{marginBottom:'1.2rem'}}>
+                <strong>Tips:</strong> Always learn nouns with their article. Use color-coding or mnemonics. Practice with real examples and group nouns by endings.
+              </div>
+            </div>
             <div style={{marginBottom: '2rem'}}>
               <h3>Artikelbestimmung</h3>
               <h4 style={{fontSize:'1.6rem', fontWeight:800, marginTop:'0.7rem', marginBottom:'0.1rem', color:'#eceff4', letterSpacing:'0.01em'}}>die</h4>
