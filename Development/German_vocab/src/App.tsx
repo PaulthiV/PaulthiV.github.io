@@ -16,61 +16,46 @@ function splitArticle(german: string) {
   return { article: '', word: german };
 }
 
-// Helper to get all .txt files in vocab folder
+// Load vocab file list from vocab_manifest.json for robust static hosting
 async function loadAllVocabFiles(): Promise<string[]> {
-  const files = [
-    'egp1_vokabeln.txt',
-    'egp2_vokabeln.txt',
-    'egp3_vokabeln.txt',
-    'egp4_vokabeln_4axTu6oqpDtjsjh.txt',
-    'egp5_vokabeln_sDdVBELLBUJz6cT (1).txt',
-    'egp6_vokabeln_MMkra7odZcPbhdq.txt',
-    'egp7_vokabeln_pw2HZ3yWx1vT9ra.txt',
-    'egp8_vokabeln_VUMsrufxtAUDhGu.txt',
-    'egp9_vokabeln_OYGrMa9GQtM2vml.txt',
-    'egp10_vokabeln_KSbL2hgeP5FmRAX.txt',
-    'egp11_vokabeln_eURodA1aGNgHhxC.txt',
-    'egp12_vokabeln_w491kVBnGVDJdPd.txt',
-    'egp13_vokabeln_zp6jx1uMi6TG0ab.txt',
-    'egp14_vokabeln_0r3zDjVZpSueBkx.txt',
-    'egp15_vokabeln_ii4VDDj4NLe0wMo.txt',
-    'egp16_vokabeln_CGX2hoaA1JsnT08.txt',
-    'egp17_vokabeln_dXUI2f4ZKxhU3jF.txt',
-    'egp18_vokabeln_1rJGDCaPnCyZcQj.txt',
-    'egp19_vokabeln_ZImnXz0Bd0eER7J.txt',
-    'egp20_vokabeln_FFRo0sJEV0Mnhzv.txt',
-    'egp21_vokabeln_RgJkL8UzQrDsaw0.txt',
-    'egp22_vokabeln_Tk6jHsSsDQgLcxS.txt',
-    'egp23_vokabeln_mCoAPn0b6N3GQk3.txt',
-    'egp24_vokabeln_bqCuuuoLWeUjxDT.txt',
-  ];
-  const contents = await Promise.all(
-    files.map(f => fetch(`/vocab/${f}`).then(r => r.ok ? r.text() : ''))
-  );
-  // If all files are empty, use basic.txt as fallback
-  if (contents.every(c => !c.trim())) {
+  try {
+    const manifestResp = await fetch('/vocab/vocab_manifest.json');
+    if (!manifestResp.ok) throw new Error('Manifest not found');
+    const files: string[] = await manifestResp.json();
+    if (!Array.isArray(files) || files.length === 0) throw new Error('No files in manifest');
+    const contents = await Promise.all(
+      files.map(f => fetch(`/vocab/${f}`).then(r => r.ok ? r.text() : ''))
+    );
+    return contents.filter(c => c.trim());
+  } catch (e) {
+    // Fallback: try to load basic.txt only
     const fallback = await fetch('/vocab/basic.txt').then(r => r.ok ? r.text() : '');
     return [fallback];
   }
-  return contents.filter(c => c.trim());
 }
 
+// Parse vocab files, supporting multiple delimiters (tab, semicolon, dash)
 function parseVocabFiles(contents: string[]): VocabPair[] {
-  // Merge all lines, group by unique German word
   const vocabMap = new Map<string, Set<string>>();
   contents.forEach(content => {
     content.split('\n')
       .map(line => line.trim())
       .filter(line => line && !line.startsWith('//'))
       .forEach(line => {
-        const sepIndex = line.indexOf(' - ');
-        if (sepIndex !== -1) {
-          const german = line.slice(0, sepIndex).trim();
-          const english = line.slice(sepIndex + 3).trim();
-          if (german && english) {
-            if (!vocabMap.has(german)) vocabMap.set(german, new Set());
-            vocabMap.get(german)!.add(english);
-          }
+        // Try all common delimiters
+        let german = '', english = '';
+        if (line.includes(' - ')) {
+          [german, english] = line.split(' - ');
+        } else if (line.includes('\t')) {
+          [german, english] = line.split('\t');
+        } else if (line.includes(';')) {
+          [german, english] = line.split(';');
+        }
+        german = german?.trim();
+        english = english?.trim();
+        if (german && english) {
+          if (!vocabMap.has(german)) vocabMap.set(german, new Set());
+          vocabMap.get(german)!.add(english);
         }
       });
   });
