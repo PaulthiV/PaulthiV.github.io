@@ -1,0 +1,97 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@10.9.2
+2 info using node@v22.16.0
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/paulthi/Library/Caches/typescript/5.9/.npmrc
+5 silly config load:file:/Users/paulthi/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm install @types/react@ts5.9 @types/react-dom@ts5.9 @types/gh-pages@ts5.9 @types/node@ts5.9
+8 verbose argv "install" "--ignore-scripts" "@types/react@ts5.9" "@types/react-dom@ts5.9" "@types/gh-pages@ts5.9" "@types/node@ts5.9" "--save-dev" "--user-agent" "typesInstaller/5.9.3"
+9 verbose logfile logs-max:10 dir:/Users/paulthi/.npm/_logs/2026-04-19T19_22_27_309Z-
+10 verbose logfile /Users/paulthi/.npm/_logs/2026-04-19T19_22_27_309Z-debug-0.log
+11 silly logfile start cleaning logs, removing 1 files
+12 silly packumentCache heap:4345298944 maxSize:1086324736 maxEntrySize:543162368
+13 silly logfile done cleaning log files
+14 silly packumentCache corgi:https://registry.npmjs.org/@types%2freact cache-miss
+15 silly packumentCache corgi:https://registry.npmjs.org/@types%2freact-dom cache-miss
+16 silly packumentCache corgi:https://registry.npmjs.org/@types%2fgh-pages cache-miss
+17 silly packumentCache corgi:https://registry.npmjs.org/@types%2fnode cache-miss
+18 http fetch GET 200 https://registry.npmjs.org/@types%2fgh-pages 6334ms (cache revalidated)
+19 silly packumentCache corgi:https://registry.npmjs.org/@types%2fgh-pages set size:13355 disposed:false
+20 http fetch GET 200 https://registry.npmjs.org/@types%2freact 7282ms (cache updated)
+21 silly packumentCache corgi:https://registry.npmjs.org/@types%2freact set size:undefined disposed:false
+22 http fetch GET 200 https://registry.npmjs.org/@types%2freact-dom 8118ms (cache updated)
+23 silly packumentCache corgi:https://registry.npmjs.org/@types%2freact-dom set size:undefined disposed:false
+24 http fetch GET 200 https://registry.npmjs.org/@types%2fnode 13710ms (cache updated)
+25 silly packumentCache corgi:https://registry.npmjs.org/@types%2fnode set size:undefined disposed:false
+26 silly idealTree buildDeps
+27 silly fetch manifest @types/gh-pages@6.1.0
+28 silly packumentCache full:https://registry.npmjs.org/@types%2fgh-pages cache-miss
+29 http fetch GET 200 https://registry.npmjs.org/@types%2fgh-pages 330ms (cache revalidated)
+30 silly packumentCache full:https://registry.npmjs.org/@types%2fgh-pages set size:26291 disposed:false
+31 silly fetch manifest @types/react@19.2.14
+32 silly packumentCache full:https://registry.npmjs.org/@types%2freact cache-miss
+33 http fetch GET 200 https://registry.npmjs.org/@types%2freact 1259ms (cache updated)
+34 silly packumentCache full:https://registry.npmjs.org/@types%2freact set size:undefined disposed:false
+35 silly fetch manifest @types/react-dom@19.2.3
+36 silly packumentCache full:https://registry.npmjs.org/@types%2freact-dom cache-miss
+37 http fetch GET 200 https://registry.npmjs.org/@types%2freact-dom 1039ms (cache updated)
+38 silly packumentCache full:https://registry.npmjs.org/@types%2freact-dom set size:undefined disposed:false
+39 silly fetch manifest @types/node@25.6.0
+40 silly packumentCache full:https://registry.npmjs.org/@types%2fnode cache-miss
+41 http fetch GET 200 https://registry.npmjs.org/@types%2fnode 11701ms (cache updated)
+42 silly packumentCache full:https://registry.npmjs.org/@types%2fnode set size:undefined disposed:false
+43 silly placeDep ROOT @types/gh-pages@6.1.0 OK for:  want: 6.1.0
+44 silly placeDep ROOT @types/node@25.6.0 OK for:  want: 25.6.0
+45 silly placeDep ROOT @types/react@19.2.14 OK for:  want: 19.2.14
+46 silly placeDep ROOT @types/react-dom@19.2.3 OK for:  want: 19.2.3
+47 silly fetch manifest undici-types@~7.19.0
+48 silly packumentCache full:https://registry.npmjs.org/undici-types cache-miss
+49 silly fetch manifest csstype@^3.2.2
+50 silly packumentCache full:https://registry.npmjs.org/csstype cache-miss
+51 http fetch GET 200 https://registry.npmjs.org/csstype 1014ms (cache updated)
+52 silly packumentCache full:https://registry.npmjs.org/csstype set size:undefined disposed:false
+53 http fetch GET 200 https://registry.npmjs.org/undici-types 2340ms (cache updated)
+54 silly packumentCache full:https://registry.npmjs.org/undici-types set size:undefined disposed:false
+55 silly placeDep ROOT undici-types@7.19.2 OK for: @types/node@25.6.0 want: ~7.19.0
+56 silly placeDep ROOT csstype@3.2.3 OK for: @types/react@19.2.14 want: ^3.2.2
+57 silly reify moves {}
+58 silly audit bulk request {
+58 silly audit   'types-registry': [ '0.1.766' ],
+58 silly audit   '@types/gh-pages': [ '6.1.0' ],
+58 silly audit   '@types/node': [ '25.6.0' ],
+58 silly audit   '@types/react': [ '19.2.14' ],
+58 silly audit   '@types/react-dom': [ '19.2.3' ],
+58 silly audit   'undici-types': [ '7.19.2' ],
+58 silly audit   csstype: [ '3.2.3' ]
+58 silly audit }
+59 http cache csstype@https://registry.npmjs.org/csstype/-/csstype-3.2.3.tgz 0ms (cache hit)
+60 http cache @types/node@https://registry.npmjs.org/@types/node/-/node-25.6.0.tgz 0ms (cache hit)
+61 http cache undici-types@https://registry.npmjs.org/undici-types/-/undici-types-7.19.2.tgz 0ms (cache hit)
+62 http cache @types/react-dom@https://registry.npmjs.org/@types/react-dom/-/react-dom-19.2.3.tgz 0ms (cache hit)
+63 http cache @types/gh-pages@https://registry.npmjs.org/@types/gh-pages/-/gh-pages-6.1.0.tgz 0ms (cache hit)
+64 http cache @types/react@https://registry.npmjs.org/@types/react/-/react-19.2.14.tgz 0ms (cache hit)
+65 silly tarball no local data for @types/react-dom@https://registry.npmjs.org/@types/react-dom/-/react-dom-19.2.3.tgz. Extracting by manifest.
+66 silly tarball no local data for @types/node@https://registry.npmjs.org/@types/node/-/node-25.6.0.tgz. Extracting by manifest.
+67 silly tarball no local data for csstype@https://registry.npmjs.org/csstype/-/csstype-3.2.3.tgz. Extracting by manifest.
+68 silly tarball no local data for undici-types@https://registry.npmjs.org/undici-types/-/undici-types-7.19.2.tgz. Extracting by manifest.
+69 silly tarball no local data for @types/react@https://registry.npmjs.org/@types/react/-/react-19.2.14.tgz. Extracting by manifest.
+70 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 468ms
+71 silly audit report {}
+72 http fetch GET 200 https://registry.npmjs.org/csstype/-/csstype-3.2.3.tgz 1345ms (cache miss)
+73 http fetch GET 200 https://registry.npmjs.org/@types/react-dom/-/react-dom-19.2.3.tgz 1445ms (cache miss)
+74 http fetch GET 200 https://registry.npmjs.org/@types/node/-/node-25.6.0.tgz 2720ms (cache miss)
+75 http fetch GET 200 https://registry.npmjs.org/undici-types/-/undici-types-7.19.2.tgz 8984ms (cache miss)
+76 http fetch GET 200 https://registry.npmjs.org/@types/react/-/react-19.2.14.tgz 9058ms (cache miss)
+77 silly ADD node_modules/csstype
+78 silly ADD node_modules/undici-types
+79 silly ADD node_modules/@types/react-dom
+80 silly ADD node_modules/@types/react
+81 silly ADD node_modules/@types/node
+82 silly ADD node_modules/@types/gh-pages
+83 verbose cwd /Users/paulthi/Library/Caches/typescript/5.9
+84 verbose os Darwin 23.0.0
+85 verbose node v22.16.0
+86 verbose npm  v10.9.2
+87 verbose exit 0
+88 info ok

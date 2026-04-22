@@ -1,0 +1,55 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@10.9.2
+2 info using node@v22.16.0
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/paulthi/Library/Caches/typescript/5.9/.npmrc
+5 silly config load:file:/Users/paulthi/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm install @types/less@ts5.9 @types/stylus@ts5.9
+8 verbose argv "install" "--ignore-scripts" "@types/less@ts5.9" "@types/stylus@ts5.9" "--save-dev" "--user-agent" "typesInstaller/5.9.3"
+9 verbose logfile logs-max:10 dir:/Users/paulthi/.npm/_logs/2026-04-22T18_14_17_785Z-
+10 verbose logfile /Users/paulthi/.npm/_logs/2026-04-22T18_14_17_785Z-debug-0.log
+11 silly logfile start cleaning logs, removing 1 files
+12 silly packumentCache heap:4345298944 maxSize:1086324736 maxEntrySize:543162368
+13 silly logfile done cleaning log files
+14 silly packumentCache corgi:https://registry.npmjs.org/@types%2fless cache-miss
+15 silly packumentCache corgi:https://registry.npmjs.org/@types%2fstylus cache-miss
+16 http fetch GET 200 https://registry.npmjs.org/@types%2fless 192ms (cache updated)
+17 silly packumentCache corgi:https://registry.npmjs.org/@types%2fless set size:undefined disposed:false
+18 http fetch GET 200 https://registry.npmjs.org/@types%2fstylus 348ms (cache updated)
+19 silly packumentCache corgi:https://registry.npmjs.org/@types%2fstylus set size:undefined disposed:false
+20 silly idealTree buildDeps
+21 silly fetch manifest @types/less@3.0.8
+22 silly packumentCache full:https://registry.npmjs.org/@types%2fless cache-miss
+23 http fetch GET 200 https://registry.npmjs.org/@types%2fless 91ms (cache updated)
+24 silly packumentCache full:https://registry.npmjs.org/@types%2fless set size:undefined disposed:false
+25 silly fetch manifest @types/stylus@0.48.43
+26 silly packumentCache full:https://registry.npmjs.org/@types%2fstylus cache-miss
+27 http fetch GET 200 https://registry.npmjs.org/@types%2fstylus 57ms (cache updated)
+28 silly packumentCache full:https://registry.npmjs.org/@types%2fstylus set size:undefined disposed:false
+29 silly placeDep ROOT @types/less@3.0.8 OK for:  want: 3.0.8
+30 silly placeDep ROOT @types/stylus@0.48.43 OK for:  want: 0.48.43
+31 silly reify moves {}
+32 silly audit bulk request {
+32 silly audit   '@types/gh-pages': [ '6.1.0' ],
+32 silly audit   '@types/node': [ '25.6.0' ],
+32 silly audit   '@types/react': [ '19.2.14' ],
+32 silly audit   '@types/react-dom': [ '19.2.3' ],
+32 silly audit   csstype: [ '3.2.3' ],
+32 silly audit   'types-registry': [ '0.1.766' ],
+32 silly audit   'undici-types': [ '7.19.2' ],
+32 silly audit   '@types/less': [ '3.0.8' ],
+32 silly audit   '@types/stylus': [ '0.48.43' ]
+32 silly audit }
+33 http cache @types/stylus@https://registry.npmjs.org/@types/stylus/-/stylus-0.48.43.tgz 0ms (cache hit)
+34 http cache @types/less@https://registry.npmjs.org/@types/less/-/less-3.0.8.tgz 0ms (cache hit)
+35 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 209ms
+36 silly audit report {}
+37 silly ADD node_modules/@types/stylus
+38 silly ADD node_modules/@types/less
+39 verbose cwd /Users/paulthi/Library/Caches/typescript/5.9
+40 verbose os Darwin 23.0.0
+41 verbose node v22.16.0
+42 verbose npm  v10.9.2
+43 verbose exit 0
+44 info ok

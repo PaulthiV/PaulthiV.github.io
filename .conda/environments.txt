@@ -1,0 +1,8 @@
+/Users/paulthi/opt/anaconda3
+/opt/anaconda3
+/Users/paulthi/opt/anaconda3/envs/py37
+/Users/paulthi/opt/anaconda3/envs/newenvt
+/Users/paulthi/opt/anaconda3/envs/tensorflow
+/Users/paulthi/opt/anaconda3/envs/pytf
+/Users/paulthi/opt/anaconda3/envs/tensorflow-env
+/Users/paulthi/opt/anaconda3/envs/learn
