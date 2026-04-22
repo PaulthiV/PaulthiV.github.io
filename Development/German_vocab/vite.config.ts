@@ -2,6 +2,6 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: '/',
+  base: '/', // For root-level deployment (https://paulthiv.github.io/)
   plugins: [react()],
 });
