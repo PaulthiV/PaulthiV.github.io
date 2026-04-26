@@ -2,6 +2,6 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: '/German_vocab/', // For subdirectory deployment
+  base: '/', // For root-level deployment
   plugins: [react()],
 });
