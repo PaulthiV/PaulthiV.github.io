@@ -3,23 +3,27 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [gh-pages]
+    paths:
+      - 'Development/German_vocab/**'
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: Development/German_vocab
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm ci
+      - name: Install dependencies
+        working-directory: Development/German_vocab
+        run: npm ci
       - name: Generate vocab manifest
+        working-directory: Development/German_vocab
         run: node scripts/generate-vocab-manifest.cjs
-      - run: npm run build
+      - name: Build
+        working-directory: Development/German_vocab
+        run: npm run build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
