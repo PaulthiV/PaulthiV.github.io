@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [gh-pages]
+    branches: [master]
     paths:
       - 'Development/German_vocab/**'
 
@@ -24,9 +24,10 @@ jobs:
       - name: Build
         working-directory: Development/German_vocab
         run: npm run build
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: Development/German_vocab/dist
           destination_dir: German_vocab
+          cname: paulthiv.github.io
