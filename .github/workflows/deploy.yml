@@ -1,0 +1,41 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'Development/German_vocab/**'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        working-directory: Development/German_vocab
+        run: npm ci
+      - name: Generate vocab manifest
+        working-directory: Development/German_vocab
+        run: node scripts/generate-vocab-manifest.cjs
+      - name: Build
+        working-directory: Development/German_vocab
+        run: npm run build
+      - name: Deploy to GitHub Pages
+        run: |
+          cd /tmp
+          git clone --depth 1 https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git deploy-repo
+          cd deploy-repo
+          # Remove all files except .git and Development folder to preserve source
+          find . -maxdepth 1 -type f -delete
+          rm -rf .github .vscode node_modules .* 2>/dev/null || true
+          # Copy built files to root
+          cp -r ${{ github.workspace }}/Development/German_vocab/dist/* .
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "chore: deploy German_vocab to root from workflow" || true
+          git push origin master
