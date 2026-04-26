@@ -1,0 +1,710 @@
+mitsingen;to sing along
+sich wundern;to wonder
+sich etw. ausdenken;to make up sth.
+vorbereiten;to prepare
+am Anfang;at the beginning
+rat mal;guess what
+zugange sein;to be busy
+der Wahnsinn (ugs.);crazy (colloq.)
+an die (ugs.);almost (colloq.)
+geil (ugs.);awesome (colloq.)
+langsam;slowly
+das Gefühl;feeling
+erleben;to experience
+sich betrinken;to get drunk
+einkaufen;to go shopping
+jdn. beraten;to advise sb.
+zugucken;to watch
+das Weinregal;wine rack
+schmecken;to taste
+die Verbindung;connection
+abbrechen;to break down
+die halbe Stunde;half an hour
+jdn. um etw. bitten;to ask sb. for sth.
+die Heimatstadt;hometown
+in der Nähe von;close to
+dirigieren;to direct
+die Tankstelle;gas station
+zusammensitzen;to sit together
+stumpf;dull
+das Einzige;the only thing
+die Eltern;parents
+das Wochenende;weekend
+verbringen;to spend
+Frohe Ostern;Happy Easter
+sich erinnern;to remember
+Bussi (ugs.);kiss (colloq.)
+Schmatzer (ugs.);kiss (colloq.)
+fälschlicherweise;wrongly
+bezeichnen;to call
+Grüße ausrichten;to send greetings
+unbemerkt;unnoticed
+jdn. lieb haben;to love sb.
+dumm;stupid
+hin und her;back and forth
+die Beziehung;relationship
+das Schlimmste;the worst
+geliebt;beloved
+regelmäßig;regularly
+getrennt sein;to be separated
+der Nachweis;proof
+ordentlich;duly
+reichen;to be enough
+natürlich;of course
+vorlesen;to read aloud
+weitergehen;to go on
+grüßen;to greet
+besuchen;to visit
+witzig;funny
+endlich;finally
+etw. ausstellen;to turn sth. off
+gleichzeitig;simultaneously
+später;later
+einschlafen;to fall asleep
+der Rechner;computer
+beobachten;to watch
+wegnicken (ugs.);to doze off (colloq.)
+sacken (ugs.);to sink (colloq.)
+winken;to wave
+das Schauspiel;spectacle
+die Fernbeziehung;long-distance relationship
+die Sendung;show
+die Zeitschrift;magazine
+auflagenstark;with a high circulation
+das Insiderwissen;insider knowledge
+durch sein (ugs.);to be done (colloq.)
+teilweise;partly
+berichten;to report
+schmerzlich;painful
+auffallen;to notice
+monatlich;monthly
+verschicken;to send
+vierteljährlich;quarterly
+veröffentlichen;to publish
+landen;to end up
+bedeuten;to mean
+besorgen;to get
+das Mitglied;member
+die Auflage;edition
+am Zahn der Zeit sein (ugs.);to be on the cutting edge (colloq.)
+Bescheid wissen;to know about it
+das Wegwerfprodukt;disposable product
+nachhaltig;sustainable
+der Müll;trash
+die Ressourcenverschwendung;waste of resources
+die Idee;idea
+wohnen;to live
+der Führerschein;driver's licence
+empfehlenswert;recommendable
+die Panne;breakdown
+abschleppen;to tow away
+der Haushalt;household
+der Hinweis;hint
+erwähnen;to mention
+drucken;to print
+hinweisen auf;to refer to
+der Zusammenschluss;coalition
+die Bewegung;movement
+erstellen;to create
+dringend;urgent
+brauchen;to need
+kostenlos;free of charge
+die Freundschaft;friendship
+vorschlagen;to propose
+programmatisch;programmatically
+bekommen;to get
+sondern;but
+Freunde finden;to find friends
+die Schwierigkeit;difficulty
+typisch deutsch;typically German
+die Jugendzeit;teenage years
+unbedingt;necessarily
+die Erwartungshaltung;expectation
+jdn. kennenlernen;to get to know sb.
+der Freundeskreis;circle of friends
+der Außenstehende;outsider
+vorher;before
+selten;rarely
+etw. beobachten;to watch sth.
+bestätigen;to confirm
+der Vergleich;comparison
+unwahrscheinlich;incredibly
+eher;rather
+der Kindergarten;nursery
+richtig;correct
+bestimmt;definitely
+schwanger;pregnant
+die Grundschule;primary school
+beide;both
+nämlich;namely
+einfallen;to remember
+abspielen;to play
+tatsächlich;actually
+die Geburt;birth
+kennen;to know
+es kann sein;it is possible that
+das Verständnis;understanding
+aufgrund von etw.;because of sth.
+überall;everywhere
+der Bericht;report
+schwierig;difficult
+der Sportverein;sports club
+erfolgreich;successful
+leicht;easy
+fremd sein;to not know anybody
+passieren;to happen
+schlecht;bad
+sprechen;to speak
+jemand;someone
+der Hintergrund;background
+niemand;nobody
+der Ausländer;foreigner
+eine Rolle spielen;to matter
+die Erwartung;expectation
+ignorieren;to ignore
+der Rassismus;racism
+die Mehrheit;majority
+grundsätzlich;basically
+vermuten;to assume
+die Sprache;language
+der Auslandsaufenthalt;stay abroad
+die Richtung;direction
+einfach;simply
+etw. eingehen;to enter into sth.
+anstrengend;exhausting
+etw. verstehen;to understand sth.
+blöd;stupid
+ungerecht;unjust
+to exist;to reign
+die Weltsprache;universal language
+ankommen;to arrive
+die Hürde;hurdle
+Kontakt schließen;to make contact
+die Erfahrung;experience
+die Stadt;town
+ziehen;to move
+Jugendfreunde;youth friends
+schlechte Karten haben (ugs.);to have bad prospects (colloq.)
+der Kontaktaufbau;making new contacts
+ermöglichen;to enable
+arbeitslos sein;to be unemployed
+die kalte Schulter zeigen (ugs.);to give the cold shoulder (colloq.)
+meistens;mostly
+die Kindheit;childhood
+die Verwandtschaft;relatives
+der Neue;new 
+ziemlich;pretty
+traurig;sad
+die Problematik;difficulty of
+hoffen;to hope
+gegenüber;compared to
+deutlich;clearly
+betreffen;to concern
+akzeptieren;to accept
+sich unterhalten;to talk
+oberflächlich;superficially
+die Anführungszeichen;quotation marks
+das Geschäft;shop
+geregelt;organized
+über etw. nachdenken;to think about sth.
+unbegrenzt;unlimited
+das Denken;thinking
+manchmal;sometimes
+von etw. abhängen;to depend on sth.
+planen;to plan
+sich verabreden;to arrange sth.
+zum Teil;in part
+gängig;common
+vorbeikommen;to drop by
+komisch;weird
+andererseits;on the other hand
+die Privatsphäre;privacy
+auf etw. bedacht sein;to consider sth.
+derjenige;the one
+ankündigen;to announce
+vorher;previously
+beschäftigt sein;to be busy
+der Kuchen;cake
+sich wünschen;to wish
+merken;to note
+das Zeichen;sign
+anrufen;to call
+leid tun;to be sorry
+verplanen;to plan
+zusammen;together
+mit etw. zu tun haben;to have to do with sth.
+üblich;common
+der Termin;appointment
+im Voraus;ahead of time
+eintragen;to note down
+die Freizeit;free time
+der Schritt;step
+Kontakte knüpfen;to make new contacts
+Kontakte halten;to stay in contact
+unterschiedlich;different
+selbstbewusst;self-confident
+drauf los reden (ugs.);to just talk (colloq.)
+etw. hassen;to hate sth.
+einsam;lonely
+die Heimat;home country
+spätestens;at the latest
+Zeit haben;to have time
+anmelden;to register
+die Möglichkeit;possibility
+nachdenken;to think
+an etw. liegen;to be due to sth.
+einerseits;on the one hand
+die Sportart;sport
+das Klettern;rock climbing
+höchstens;at most
+der Artikel;article
+empfehlen;to recommend
+jedenfalls;at least
+Freundschaften schließen;to make friends
+woran liegt das?;why ist that?
+verplempern (ugs.);to waste (colloq.)
+die Schulzeit;school time
+befreundet sein;to be friends
+sich treffen;to meet
+Fahrrad fahren;to cycle
+abhängen (ugs.);to hang out (colloq.)
+das Erwachsenenalter;adult age
+der Baustein;brick
+ohne Plan;without a plan
+auf etw. zurückkommen;to come back to sth.
+so in der Art;something like that
+entstehen;to come into being
+die meisten;most 
+tatsächlich;in fact
+eigentlich;actually
+kennenlernen;to get to know
+genießen;to enjoy
+alleine sein;to be alone
+der Unterschied;difference
+einsam sein;to be lonely
+im negativen Sinne;in a negative sense
+stören;to bother
+trotzdem;nevertheless
+auf etw. ankommen;to depend on sth.
+ändern;to change
+in Kontakt kommen;to get in touch
+umgekehrt;opposite
+Kontakt halten;to stay in contact
+für jeden;for everyone
+das Kriterium;criterion
+helfen;to help
+eng;close
+locker;loosely
+Zeit verbringen;to spend time
+ähnlich;similar to
+das Gesprächsthema;topic of conversation
+die Lebenssituation;living situation
+die Leute;people
+das Kneipe;pub
+auf etw. Wert legen;to place importance on sth.
+sich um jdn. kümmern;to take care of sb.
+die Gewohnheit;habit
+etw. mögen;to like sth.
+das Gesellschaftsspiel;board game
+mit dem Ziel;with the goal of
+am liebsten;preferably
+die Spannweite;range
+auf einer Wellenlänge sein (ugs.);to be on the same wavelength (colloq.)
+ähnlich;similar
+dazu führen;to lead to
+aufwachsen;to grow up
+geprägt;influenced
+erklärbar;understandable
+im Grunde;basically
+der Schnittpunkt;intersection
+gleichzeitig;at the same time
+mehrmals;several times
+überleben;to survive
+zwischenzeitlich;in the meantime
+sich melden;to get in touch
+zeitweise;temporarily
+an etw. anknüpfen;to continue sth.
+der Druck;pressure
+passen;to fit
+der Grund;reason
+ernst;serious
+etw. äußern;to express sth.
+jdn. unter Druck setzen;to pressure sb.
+Freundschaft halten;to keep a friendship
+scheitern;to fail
+vorkommen;to occur
+etw. ernst nehmen;to take sth. seriously
+sich fragen;to wonder
+verrückt;crazy
+klingen;to sound
+die Sache;thing
+sich vorstellen;to imagine
+ziehen nach;to move to
+komischerweise;strangely
+nur;only
+befreundet sein;to be friends with
+obwohl;although
+Deutsch sprechen;to speak German
+lange;long
+sagen;to say
+erklären;to explain
+etw. schwingt mit;there is a note of sth.
+nie;never
+definieren;to define
+sozusagen;so to speak
+das Geheimnis;secret
+jdm. etw. anvertrauen;to trust sb. with sth.
+recht haben ;to be right
+eine Handvoll;a handful of
+komplett;completely
+man selbst sein;to be oneself
+ehrlich;honest
+andersrum;the other way around
+üblich;usual
+häufig;common
+jemanden haben;to have someone
+mindestens;at least
+stimmt;true
+der Bereich;area
+stärker;more
+etw. ausbauen;to cultivate
+etw. zulassen;to allow sth.
+das Grundvertrauen;fundamental trust
+die Sozialforschung;social research
+der Grad an;degree of
+sich leihen;to borrow
+verwundbar;vulnerable
+jahrelang;for years
+die Schulden;debt
+weinen;to cry
+die Macke;quirk
+der Kindheitsfreund;childhood friend
+sich anstrengen;to make an effort
+fröhlich;cheerful
+freundlich;friendly
+jdn. fröhlich machen;to cheer sb. up
+das Kennzeichen ;sign 
+jdn. etw. mitgeben;to give sth. to sb.
+reserviert sein;to be reserved
+gewisse;certain
+die Ernsthaftigkeit;seriousness
+die Freundschaftspflege;friendship care
+etw. verschweigen;to keep sth. secret
+das Einwanderungsland;country of immigration
+träumen;to dream
+die Wunsch;wish
+erfüllen;to fulfill
+seine Träume verwirklichen;to realize one's dreams
+der Umgang;handling
+sich etw. bewusst sein;to be aware of sth.
+investieren;to invest
+schwerfallen;to be difficult
+extrovertiert;extroverted
+in der Natur von jdm. sein;to be sb.'s nature
+auf jdn. zugehen;to go up to sb.
+der Gewinn;pay-off
+riesig;huge
+jdn. ansprechen;to speak to sb.
+die Empfehlung;recommendation
+reinstecken;to put in
+den Kopf hängen lassen (ugs.);to hang one's head (colloq.)
+pflegen;to cultivate
+überlegen;to consider
+etw. merken;to realize sth.
+die Anstrengung;effort
+die Geduldfrage;question of patience
+frustrierend;frustrating
+das Glück;luck
+klappen;to work out
+der Umstand ;fact 
+wahrscheinlich;probably
+das Umfeld;environment
+sitzen;to sit
+vergessen;to forget
+von etw. ausgehen;to assume sth.
+dazugehören;to be part (of the experience)
+sich beschweren;to complain
+etw. füllen;to fill sth.
+ehrlich;honestly
+der Türöffner;door opener
+klingeln;to ring
+die Sprechanlage;intercom system
+der Einzug;the move
+der Hausmeister;caretaker
+sich etw. anschauen;to take a look at sth.
+kaputt;broken
+etw. austauschen;to exchange sth.
+die Anlage;installation
+hängen;to hang
+der Klingelton;ring tone
+sich etw. aussuchen;to choose sth.
+scheiße;shit
+die Bedienung;operation
+wechseln;to change
+durchdrehen;to go crazy
+versuchen;to try
+der Hammer (ugs.);awesome (colloq.)
+eingestellt sein;to be set up
+klappen;to work
+die Fummelei (ugs.);fiddling (colloq.)
+vorspielen;to play
+die Geburtsstadt;hometown
+diejenigen;those
+etw. erfinden;to invent sth.
+die Länge;length
+die Lieferung;delivery
+während;during
+etw. aufnehmen;to record sth.
+erfreut sein;to be pleased
+der Knopf;button
+beziehungsweise;respectively
+jdn. in den Wahnsinn treiben;to drive sb. mad
+die Bedienungen;controls
+die Angelegenheit;matter 
+die Gelegenheit;opportunity
+der Fall;case
+die Untergrundverbindung;underground organization
+etw. abstreiten;to deny sth.
+die Anekdote;anecdote
+der Protest;protest
+ziviler Ungehorsam;civil disobedience
+sitzen bleiben;to keep sitting down
+aufstehen;to get up
+wegtragen;to carry away
+ablaufen;to take place
+durchaus;quite
+die Gewalt;violence
+anwenden;to use
+behutsam;carefully
+sich wehtun;to hurt oneself
+friedlich;peacefully
+vonstatten gehen;to go about
+dementsprechend;accordingly
+die Aufnahme;recording
+der Streifenwagen;police car
+stationiert sein;to be stationed
+vergleichen;to compare
+in der Nähe;around
+gucken;to look
+die Klingel;bell
+keine Sorge;no worries
+nicken;to nod
+weitermachen;to continue
+schwenken;to pan
+das Recht;right
+auf etw. beharren;to insist upon sth.
+löschen;to delete
+überhaupt;anyway
+gefilmt werden;to be filmed
+gundsätzlich;in general
+etw. unterschreiben (ugs.);to agree with sth. (colloq.)
+der Ruf;reputation
+als gedacht;than expected
+gut aussehend;good-looking
+eine Erfahrung teilen;to share an experience
+öfters;often
+kontrolliert werden;to be inspected
+der Tonfall;tone of voice
+begegnen;to meet
+als Erstes;first of all
+von etw. angesprochen sein;to be drawn by sth.
+das Recht;law
+die Ordnung;order
+die Tendenz;trend
+vorherrschen;to dominate
+etw. verneinen;to deny sth.
+durchgreifen;to take action
+die Straftat;criminal act
+die Begegnung;meeting
+erstaunlich;amazing
+zumindest;at least
+aussehen;to look
+sich mit jdm. anlegen;to pick a fight with sb.
+ausstrahlen;to radiate
+die Sicherheit;safety
+die Unsicherheit;dangers
+der Bürgersteig;sidewalk
+im Zweifelsfall;in case of doubt
+hilfreich;helpful
+klauen;to steal
+finden;to find
+der Norden;north
+mit etw. rechnen;to expect sth.
+die Diebstahlanzeige;theft report
+ausfüllen;to fill in
+die Dringlichkeit;urgency
+übergeben;to hand over
+zur Polizei gehen;to go to the police
+das Lieblings-Arrangement;favorite arrangement
+feierlich;festive
+zuhören;to listen to
+doppeln;to repeat
+aufnehmen;to record
+das Bildungsfernsehen;educational television
+öffentlich;public
+besprechen;to discuss
+die Maus;mouse
+beantworten;to answer
+zwischendurch;in between
+zuhause bleiben;to stay at home
+schließen;to close
+der Erwachsene;adult
+dazwischen;in between
+der Müll;garbage
+die Mülltonne;garbage can
+der Müllmann;garbage man
+die Mülldeponie;waste disposal site
+sortieren;to sort
+Schritt für Schritt;step by step
+der Wortschatz;vocabulary
+das Werk;the works
+die Maske;mask
+bestellen;to order
+der Mensch;person
+beschreiben;to describe
+die Geschichte;story
+bekannt werden;to become known
+der Hof;farm
+basteln;to create
+das Fahrzeug;vehicle
+das Rennen;race
+die Pflanze;plant
+anfangen;to start
+sehenswert;worth seeing
+mittlerweile;by now
+hinterherkommen;to be able to keep up
+der Musiker;musician
+selbst produziert;self-produced
+das Album;album
+die Hilfsorganisation;aid organization
+der Seenotretter;marine rescue team
+das Flüchtlingslager;refugee camp
+versorgt sein;to be provided for
+der Macher;doer
+das Zuhause;home
+sich entscheiden;to decide
+schaffen;to create
+früher;in the past
+interessant;interesting
+entdecken;to discover
+nutzen;to use
+insgesamt;in total
+manche;some
+laufen;to be playing
+leer;empty
+morgens;in the morning
+entweder oder ;either or 
+der Wald;forest
+grandios;terrific
+etw. nachvollziehen können;to be able to understand sth.
+die Entscheidung;decision
+umsetzen;to implement
+kommen aus;to come from
+leben;to live
+deshalb;therefore
+leidenschaftlich;passionately
+die Muttersprache;mother tongue
+die Verwendung;use
+die Zukunft;future
+übersetzen;to translate
+aufrichtig;sincere
+freundlich;kind
+der Akzent;accent
+die Kombination;combination
+die Aussprache;pronunciation
+umfangreich;extensive
+Mitglied werden;to become a member
+vor allem;first of all
+die Übersetzung;translation
+das Beispiel;example
+nennen;to name
+wobei;although
+werden;to become
+das Vollverb;complete verb
+das Hauptverb;main verb
+verrückt werden;to go crazy
+besser;better
+auf etw. hindeuten;to indicate sth.
+beides;both
+das Hilfsverb;auxiliary verb
+die Handlung;action
+die Absicht;intention
+der Urlaub;holiday
+jetzt gerade;just now
+verändern;to change
+verwirrend;confusing
+nochmal;again
+benutzen;to use
+hören;to hear
+die Hauptverwendung;main use
+sich anhören;to sound
+der Selbstständige;self-employed
+die Bundesregierung;German Federal Government
+fördern;to support
+geläufig;common
+die Perspektive lenken;to shift the perspective
+gefördert;funded
+zweitrangig;secondary
+allerdings;but
+betonen;to emphasize
+der Regierungsvertreter;government representative
+etw. wissen wollen;to long to know sth.
+der Beispielsatz;example sentence
+etw. ausdrücken;to express sth.
+stellen ;to add 
+auffallen;to attract attention
+falsch;wrong
+am meisten;most
+überraschen;to surprise
+die Freiheit;freedom
+sich etw. nehmen;to take sth.
+erst;only
+einsteigen;to get on board
+hier und da;now and then
+mit Beginn;since then
+Teil des Teams;part of the team
+deswegen;therefore
+ausdenken;to come up with
+die Vokabelhilfe;vocabulary helper
+das Hören;hearing
+die Hosentasche;pants pocket
+in dem Sinne;in that sense
+verstehen;to understand
+langsamer;slower
+normalerweise;normally
+scheinen;to seem
+abgesehen von;aside from
+das Vertrauen;confidence
+das Reisen;traveling
+verbinden;to connect
+abhängen von;to depend on
+der Schlüssel;key
+der Traum;dream
+die Auslandserfahrung;international experience
+das Anführungszeichen;quotation mark
+die Angst;fear
+die Hürde;obstacle
+tiefsinnig;profound
+labern (ugs.);to prattle on (colloq.)
+die Erfüllung;fulfillment
+der Anspruch;goal
+die Art und Weise;manner
+apropos;by the way
+der Urlaub;vacation
+einreichen;to request
+genehmigen;to approve
+kurzfristig;short term
+geplant;planned
+an Ort und Stelle;on the spot
+zwischendurch;in the meantime
+die Auszeit;time-out
+sich etw. gönnen;to treat oneself to sth.
+der Feiertag;holiday
+mitten;in the middle of
+der Witz;joke
+die Zeit;time
+ein bisschen;a bit
+die Wohnung;apartment
+sich um etw. kümmern;to take care of sth.
+demnächst;soon
+genau;exactly
