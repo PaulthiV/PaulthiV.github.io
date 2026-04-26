@@ -30,4 +30,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: Development/German_vocab/dist
           destination_dir: German_vocab
-          cname: paulthiv.github.io
