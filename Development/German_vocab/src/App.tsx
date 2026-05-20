@@ -300,7 +300,7 @@ function App() {
               <table style={{borderCollapse: 'collapse', marginBottom: '1.5rem'}}>
                 <thead>
                   <tr style={{background: '#3b4252'}}>
-                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Case</th>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Fall</th>
                     <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Maskulin</th>
                     <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Feminin</th>
                     <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Neutral</th>
@@ -308,16 +308,17 @@ function App() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td>Nominativ</td><td>der</td><td>die</td><td>das</td><td>die</td></tr>
-                  <tr><td>Akkusativ</td><td>den</td><td>die</td><td>das</td><td>die</td></tr>
-                  <tr><td>Dativ</td><td>dem</td><td>der</td><td>dem</td><td>den</td></tr>
+                  <tr><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Nominativ</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>der</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>die</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>das</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>die</td></tr>
+                  <tr><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Akkusativ</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>den</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>die</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>das</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>die</td></tr>
+                  <tr><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Dativ</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>dem</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>der</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>dem</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>den</td></tr>
+                  <tr><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Genitiv</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>des</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>der</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>des</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>der + n</td></tr>
                 </tbody>
               </table>
               <h3>Indefinite Articles</h3>
               <table style={{borderCollapse: 'collapse', marginBottom: '1.5rem'}}>
                 <thead>
                   <tr style={{background: '#3b4252'}}>
-                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Case</th>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Fall</th>
                     <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Maskulin</th>
                     <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Feminin</th>
                     <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Neutral</th>
@@ -325,9 +326,41 @@ function App() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td>Nominativ</td><td>ein</td><td>eine</td><td>ein</td><td>kein</td></tr>
-                  <tr><td>Akkusativ</td><td>einen</td><td>eine</td><td>ein</td><td>kein</td></tr>
-                  <tr><td>Dativ</td><td>einem</td><td>einer</td><td>einem</td><td>keinen</td></tr>
+                  <tr><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Nominativ</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>ein</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>eine</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>ein</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-</td></tr>
+                  <tr><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Akkusativ</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>einen</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>eine</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>ein</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-</td></tr>
+                  <tr><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Dativ</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>einem</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>einer</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>einem</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-</td></tr>
+                  <tr><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Genitiv</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>eines</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>einer</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>eines</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-</td></tr>
+                </tbody>
+              </table>
+              <h3>Adjective Endings</h3>
+              <table style={{borderCollapse: 'collapse', marginBottom: '1.5rem'}}>
+                <thead>
+                  <tr style={{background: '#3b4252'}}>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Adjektiv / Artikelart</th>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Maskulin (m.)</th>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Feminin (f.)</th>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Neutrum (n.)</th>
+                    <th style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>Plural</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style={{background: '#3b425255'}}><td colSpan={5} style={{padding: '0.5em 1em', border: '1px solid #4c566a', fontWeight: 'bold'}}>Nominativ Bestimmter Artikel</td></tr>
+                  <tr><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>(der/die/das)</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-e</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-e</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-e</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-en</td></tr>
+                  
+                  <tr style={{background: '#3b425255'}}><td colSpan={5} style={{padding: '0.5em 1em', border: '1px solid #4c566a', fontWeight: 'bold'}}>Nominativ Unbestimmter Artikel</td></tr>
+                  <tr><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>(ein/eine/ein)</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-er</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-e</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-es</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-en</td></tr>
+                  
+                  <tr style={{background: '#3b425255'}}><td colSpan={5} style={{padding: '0.5em 1em', border: '1px solid #4c566a', fontWeight: 'bold'}}>Akkusativ Bestimmter Artikel</td></tr>
+                  <tr><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>(der/die/das)</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-en</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-e</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-e</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-en</td></tr>
+                  
+                  <tr style={{background: '#3b425255'}}><td colSpan={5} style={{padding: '0.5em 1em', border: '1px solid #4c566a', fontWeight: 'bold'}}>Akkusativ Unbestimmter Artikel</td></tr>
+                  <tr><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>(ein/eine/ein)</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-en</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-e</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-es</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-</td></tr>
+                  
+                  <tr style={{background: '#3b425255'}}><td colSpan={5} style={{padding: '0.5em 1em', border: '1px solid #4c566a', fontWeight: 'bold'}}>Dativ Bestimmter Artikel</td></tr>
+                  <tr><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>(dem/der/dem)</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-en</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-en</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-en</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-en</td></tr>
+                  
+                  <tr style={{background: '#3b425255'}}><td colSpan={5} style={{padding: '0.5em 1em', border: '1px solid #4c566a', fontWeight: 'bold'}}>Dativ Unbestimmter Artikel</td></tr>
+                  <tr><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>(einem/einer/einem)</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-en</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-en</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-en</td><td style={{padding: '0.5em 1em', border: '1px solid #4c566a'}}>-</td></tr>
                 </tbody>
               </table>
               <h3>Possessivpronomen</h3>
